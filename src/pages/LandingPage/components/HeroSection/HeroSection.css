@@ -138,41 +138,41 @@
   filter: brightness(0) saturate(100%) invert(27%) sepia(98%) saturate(3089%) hue-rotate(220deg) brightness(101%) contrast(104%);
 }
 
-/* Individual Icon Positions */
+/* Individual Icon Positions - Using percentage for responsive scaling */
 .icon-discoverable {
-  left: 351px;
-  top: 242px;
+  left: 27.4%;
+  top: 33%;
 }
 
 .icon-direct-contract {
-  left: 624px;
-  top: 68px;
+  left: 50%;
+  top: 9.3%;
   transform: translateX(-50%);
 }
 
 .icon-job-progress {
-  left: 812px;
-  top: 129.584px;
+  left: 63.4%;
+  top: 17.7%;
 }
 
 .icon-post-job {
-  left: 442px;
-  top: 129.583px;
+  left: 34.5%;
+  top: 17.7%;
 }
 
 .icon-raise-dispute {
-  left: 893px;
-  top: 238px;
+  left: 69.8%;
+  top: 32.4%;
 }
 
 .icon-dao {
-  left: 910px;
-  top: 393px;
+  left: 71.1%;
+  top: 53.5%;
 }
 
 .icon-set-profile {
-  left: 339px;
-  top: 397px;
+  left: 26.5%;
+  top: 54.1%;
 }
 
 /* Center Content */
@@ -217,37 +217,154 @@
 /* Responsive Design */
 @media (max-width: 1440px) {
   .floating-icons {
-    width: 100vw;
-    padding: 0 80px;
+    width: 1100px;
+    height: 630px;
+  }
+
+  .circle-group {
+    width: 650px;
+    height: 650px;
+  }
+
+  .radiant-glow-container {
+    width: 680px;
+    height: 680px;
+  }
+
+  .main-circle-bg {
+    width: 540px;
+    height: 540px;
+  }
+
+  .main-heading {
+    font-size: 38px;
+    line-height: 46px;
+  }
+}
+
+/* Adjustments for 1280-1400px screens */
+@media (max-width: 1440px) and (min-width: 1281px) {
+  .floating-icons {
+    width: 1050px;
+    height: 615px;
+  }
+
+  .circle-group {
+    width: 635px;
+    height: 635px;
+  }
+
+  .radiant-glow-container {
+    width: 665px;
+    height: 665px;
+  }
+
+  .main-circle-bg {
+    width: 530px;
+    height: 530px;
   }
 
   .icon-discoverable {
-    left: 20%;
+    left: 25%;
+    top: 32.5%;
   }
-
+  
   .icon-direct-contract {
     left: 50%;
+    top: 5%;
+    transform: translateX(-50%);
   }
-
+  
   .icon-job-progress {
-    left: 65%;
+    left: 64%;
+    top: 15.5%;
   }
 
   .icon-post-job {
-    left: 35%;
+    left: 31%;
+    top: 15.5%;
   }
 
   .icon-raise-dispute {
     left: 72%;
+    top: 32.5%;
   }
 
   .icon-dao {
     left: 73%;
+    top: 54%;
   }
 
   .icon-set-profile {
-    left: 18%;
+    left: 24.5%;
+    top: 54.5%;
   }
+
+  .center-content {
+    margin-top: 0;
+  }
+}
+
+/* Adjustments for 1280px screens */
+@media (max-width: 1280px) {
+  .floating-icons {
+    width: 1000px;
+    height: 600px;
+  }
+
+  .circle-group {
+    width: 620px;
+    height: 620px;
+  }
+
+  .radiant-glow-container {
+    width: 650px;
+    height: 650px;
+  }
+
+  .main-circle-bg {
+    width: 520px;
+    height: 520px;
+  }
+
+  .center-content {
+    margin-top: 0;
+  }
+  .icon-discoverable {
+    left: 23.5%;
+    top: 32%;
+  }
+  .icon-direct-contract {
+    left: 50%;
+    top: 3.3%;
+    transform: translateX(-50%);
+  }
+  .icon-job-progress {
+    left: 65.5%;
+    top: 14.5%;
+  }
+
+  .icon-post-job {
+    left: 29.8%;
+    top: 14.5%;
+  }
+
+  .icon-raise-dispute {
+    left: 73%;
+    top: 32%;
+  }
+
+  .icon-dao {
+    left: 74.5%;
+    top: 55%;
+  }
+
+  .icon-set-profile {
+    left: 23%;
+    top: 55.5%;
+  }
+
+  
 }
 
 @media (max-width: 1024px) {
@@ -257,8 +374,8 @@
   }
 
   .radiant-glow-container {
-    width: 560px;
-    height: 560px;
+    width: 700px;
+    height: 700px;
   }
 
   .main-circle-bg {
@@ -267,13 +384,48 @@
   }
 
   .floating-icons {
-    width: 1050px;
-    height: 630px;
+    width: 950px;
+    height: 570px;
+  }
+
+  /* Adjust icon positions for medium screens */
+  .icon-discoverable {
+    left: 20.5%;
+    top: 32%;
+  }
+  .icon-direct-contract {
+    left: 50%;
+    top: -01.3%;
+    transform: translateX(-50%);
+  }
+  .icon-job-progress {
+    left: 67.5%;
+    top: 10.5%;
+  }
+
+  .icon-post-job {
+    left: 28.5%;
+    top: 10.5%;
+  }
+
+  .icon-raise-dispute {
+    left: 76%;
+    top: 32%;
+  }
+
+  .icon-dao {
+    left: 76.5%;
+    top: 55%;
+  }
+
+  .icon-set-profile {
+    left: 20%;
+    top: 55.5%;
   }
 
   .center-content {
     gap: 40px;
-    margin-top: 50px;
+    margin-top: -20px;
   }
 
   .text-content {
@@ -308,8 +460,45 @@
   }
 
   .floating-icons {
-    width: 900px;
-    height: 520px;
+    width: 780px;
+    height: 470px;
+  }
+
+  /* Adjust icon positions for tablets */
+  .icon-discoverable {
+    left: 18.5%;
+    top: 37%;
+  }
+  
+  .icon-direct-contract {
+    left: 50%;
+    top: 10.5%;
+    transform: translateX(-50%);
+  }
+
+  .icon-job-progress {
+    left: 81.5%;
+    top: 20%;
+  }
+
+  .icon-post-job {
+    left: 19.5%;
+    top: 20%;
+  }
+
+  .icon-raise-dispute {
+    left: 81.5%;
+    top: 37%;
+  }
+
+  .icon-dao {
+    left: 81.5%;
+    top: 56.5%;
+  }
+
+  .icon-set-profile {
+    left: 18.5%;
+    top: 56.5%;
   }
 
   .icon-btn {
@@ -350,16 +539,16 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 400px;
-    height: 400px;
+    width: 380px;
+    height: 380px;
     z-index: 2;
     pointer-events: none;
   }
 
   .navbar-icon-btn {
     position: absolute;
-    width: 48px !important;
-    height: 48px !important;
+    width: 44px !important;
+    height: 44px !important;
     border-radius: 50% !important;
     background: white;
     border: 2px solid #E5E5E5;
@@ -378,25 +567,25 @@
   }
 
   .navbar-icon-btn img {
-    width: 20px !important;
-    height: 20px !important;
+    width: 18px !important;
+    height: 18px !important;
   }
 
   /* Position navbar icons in a circle */
   .navbar-icon-bot {
     left: 50%;
-    top: 15%;
+    top: 8%;
     transform: translateX(-50%);
   }
 
   .navbar-icon-2 {
-    right: 20%;
-    top: 35%;
+    right: 15%;
+    top: 30%;
   }
 
   .navbar-icon-3 {
-    left: 20%;
-    top: 35%;
+    left: 15%;
+    top: 30%;
   }
 }
 
