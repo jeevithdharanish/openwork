@@ -92,7 +92,7 @@
   gap: 0;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   background: linear-gradient(to bottom, #f4f4f4, #fefefe);
-  border: 1px solid white;
+  border: 0px solid lightgrey;
 }
 
 /* Hide label text by default */
@@ -146,10 +146,20 @@
   top: 33%;
 }
 
+.icon-discoverable img {
+  width: 11.667px !important;
+  height: 10.667px !important;
+}
+
 .icon-direct-contract {
   left: 50%;
   top: 9.3%;
   transform: translateX(-50%);
+}
+
+.icon-direct-contract img {
+  width: 10.667px !important;
+  height: 10.667px !important;
 }
 
 .icon-job-progress {
@@ -157,9 +167,19 @@
   top: 17.7%;
 }
 
+.icon-job-progress img {
+  width: 11.667px !important;
+  height: 10.667px !important;
+}
+
 .icon-post-job {
   left: 34.5%;
   top: 17.7%;
+}
+
+.icon-post-job img {
+  width: 10.667px !important;
+  height: 10.667px !important;
 }
 
 .icon-raise-dispute {
@@ -167,14 +187,29 @@
   top: 32.4%;
 }
 
+.icon-raise-dispute img {
+  width: 9.667px !important;
+  height: 10.667px !important;
+}
+
 .icon-dao {
   left: 71.1%;
   top: 53.5%;
 }
 
+.icon-dao img {
+  width: 10.667px !important;
+  height: 10.667px !important;
+}
+
 .icon-set-profile {
   left: 26.5%;
   top: 54.1%;
+}
+
+.icon-set-profile img {
+  width: 9.467px !important;
+  height: 10.667px !important;
 }
 
 /* Center Content */
@@ -466,51 +501,84 @@
     height: 470px;
   }
 
-  /* Adjust icon positions for tablets */
+  /* Adjust icon positions for tablets - show only 3 icons on arc */
   .icon-discoverable {
-    left: 18.5%;
-    top: 37%;
+    display: none;
   }
   
   .icon-direct-contract {
-    left: 50%;
-    top: 10.5%;
-    transform: translateX(-50%);
+    left: 54px;
+    top: 116px;
+    transform: none;
   }
 
   .icon-job-progress {
-    left: 81.5%;
-    top: 20%;
+    left: 50%;
+    top: 85px;
+    transform: translateX(-50%);
   }
 
   .icon-post-job {
-    left: 19.5%;
-    top: 20%;
+    left: 306px;
+    top: 116px;
   }
 
   .icon-raise-dispute {
-    left: 81.5%;
-    top: 37%;
+    display: none;
   }
 
   .icon-dao {
-    left: 81.5%;
-    top: 56.5%;
+    display: none;
   }
 
   .icon-set-profile {
-    left: 18.5%;
-    top: 56.5%;
+    display: none;
   }
 
   .icon-btn {
-    width: 28px !important;
-    height: 28px !important;
+    width: 32px !important;
+    height: 32px !important;
   }
 
   .icon-btn img {
-    width: 9px !important;
-    height: 9px !important;
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  /* Individual icon sizes for tablet */
+  .icon-discoverable img {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .icon-direct-contract img {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .icon-job-progress img {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .icon-post-job img {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .icon-raise-dispute img {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .icon-dao img {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .icon-set-profile img {
+    width: 16px !important;
+    height: 16px !important;
   }
 
   .center-content {
@@ -573,6 +641,22 @@
     height: 18px !important;
   }
 
+  /* Individual navbar icon sizes for tablet */
+  .navbar-icon-bot img {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .navbar-icon-2 img {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .navbar-icon-3 img {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
   /* Position navbar icons in a circle */
   .navbar-icon-bot {
     left: 50%;
@@ -626,6 +710,42 @@
     height: 8px !important;
   }
 
+  /* Individual icon sizes for mobile */
+  .icon-discoverable img {
+    width: 8px !important;
+    height: 8px !important;
+  }
+
+  .icon-direct-contract img {
+    width: 8px !important;
+    height: 8px !important;
+  }
+
+  .icon-job-progress img {
+    width: 8px !important;
+    height: 8px !important;
+  }
+
+  .icon-post-job img {
+    width: 8px !important;
+    height: 8px !important;
+  }
+
+  .icon-raise-dispute img {
+    width: 8px !important;
+    height: 8px !important;
+  }
+
+  .icon-dao img {
+    width: 8px !important;
+    height: 8px !important;
+  }
+
+  .icon-set-profile img {
+    width: 8px !important;
+    height: 8px !important;
+  }
+
   .center-content {
     gap: 32px;
     margin-top: -100px;
@@ -661,17 +781,33 @@
     height: 18px !important;
   }
 
+  /* Individual navbar icon sizes for mobile */
+  .navbar-icon-bot img {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .navbar-icon-2 img {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .navbar-icon-3 img {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
   .navbar-icon-bot {
-    top: 10%;
+    top: -25%;
   }
 
   .navbar-icon-2 {
     right: 18%;
-    top: 32%;
+    top: -20%;
   }
 
   .navbar-icon-3 {
     left: 18%;
-    top: 32%;
+    top: -20%;
   }
 }
