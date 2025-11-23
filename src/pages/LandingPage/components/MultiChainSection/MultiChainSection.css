@@ -198,49 +198,19 @@
   white-space: nowrap;
 }
 
-/* Ellipse Background */
-.lp-10-ellipse-bg {
-  position: absolute;
-  left: 0;
-  top: 19.2px;
-  width: 340.798px;
-  height: 340.798px;
-  z-index: 0;
-  pointer-events: none;
-  transform-origin: center center;
+/* Outer Chain Image - replaces individual chain icons */
+.lp-10-outer-chain-image {
+  width: 340px;
+  height: 340px;
+  object-fit: contain;
   animation: rotate-lp10-outer 60s linear infinite;
+  margin-top: 20px;
 }
 
-@keyframes rotate-lp10-outer {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Outer Chain Icons Container - rotates with ellipse */
-.lp-10-outer-icons-container {
-  position: absolute;
-  left: 0;
-  top: 19.2px;
-  width: 340.798px;
-  height: 340.798px;
-  z-index: 3;
-  pointer-events: none;
-  transform-origin: center center;
-  animation: rotate-lp10-outer 60s linear infinite;
-}
-
-.lp-10-outer-icons-container > * {
-  pointer-events: all;
-}
-
-/* Chain Icons */
+/* Center Chain Icons - static */
 .lp-10-chain-icon {
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   overflow: hidden;
 }
 
@@ -248,42 +218,6 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-
-/* Chain Positions */
-.lp-10-chain-ethereum {
-  left: 106.55px;
-  top: 0;
-  width: 38.403px;
-  height: 38.403px;
-}
-
-.lp-10-chain-tron {
-  left: 3.19px;
-  top: 101.06px;
-  width: 28.802px;
-  height: 28.802px;
-}
-
-.lp-10-chain-bnb {
-  left: 15.47px;
-  top: 267.76px;
-  width: 29.869px;
-  height: 29.869px;
-}
-
-.lp-10-chain-arbitrum-bottom {
-  left: 290.58px;
-  top: 267.76px;
-  width: 29.869px;
-  height: 29.869px;
-}
-
-.lp-10-chain-filecoin {
-  left: 320.44px;
-  top: 119.19px;
-  width: 25.602px;
-  height: 25.602px;
 }
 
 .lp-10-chain-xdc {
@@ -298,48 +232,6 @@
   top: 154.4px;
   width: 42.67px;
   height: 42.67px;
-}
-
-/* Bottom Chain Group */
-.lp-10-chain-group {
-  position: absolute;
-  bottom: -11px;
-  left: 145.08px;
-  display: flex;
-  align-items: center;
-  z-index: 4;
-}
-
-.lp-10-chain-icon-small {
-  width: 25.602px;
-  height: 25.602px;
-  margin-right: -16.001px;
-  flex-shrink: 0;
-}
-
-.lp-10-chain-icon-small img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.lp-10-chain-counter {
-  width: 29.869px;
-  height: 29.869px;
-  border-radius: 50%;
-  border: 1.67px solid white;
-  background: linear-gradient(180deg, #F4F4F4 0%, #FEFEFE 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Satoshi', sans-serif;
-  font-weight: 700;
-  font-size: 8.534px;
-  color: white;
-  margin-right: -16.001px;
-  flex-shrink: 0;
-  overflow: hidden;
-  box-sizing: border-box;
 }
 
 /* Responsive Design */

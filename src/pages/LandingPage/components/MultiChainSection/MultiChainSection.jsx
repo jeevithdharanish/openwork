@@ -24,9 +24,6 @@ const MultiChainSection = () => {
 
         <div className="lp-10-circle-container">
           <div className="lp-10-chain-circle-group">
-            {/* Ellipse Background */}
-            <img src="/assets/lp9-ellipse-bg.svg" alt="" className="lp-10-ellipse-bg" />
-
             {/* Radiant Glow */}
             <div className="lp-10-radiant-glow"></div>
 
@@ -40,47 +37,12 @@ const MultiChainSection = () => {
               <span className="lp-10-compatible-text">COMPATIBLE WITH</span>
             </div>
 
-            {/* Outer Chain Icons Container (rotates) */}
-            <div className="lp-10-outer-icons-container">
-              {/* Chain Icons - Outer Ring */}
-              <div className="lp-10-chain-icon lp-10-chain-ethereum">
-                <img src="/assets/lp10-ethereum.svg" alt="Ethereum" />
-              </div>
-
-              <div className="lp-10-chain-icon lp-10-chain-tron">
-                <img src="/assets/lp10-tron.svg" alt="Tron" />
-              </div>
-
-              <div className="lp-10-chain-icon lp-10-chain-bnb">
-                <img src="/assets/lp10-bnb.svg" alt="BNB Chain" />
-              </div>
-
-              <div className="lp-10-chain-icon lp-10-chain-arbitrum-bottom">
-                <img src="/assets/lp10-arbitrum.svg" alt="Arbitrum" />
-              </div>
-
-              <div className="lp-10-chain-icon lp-10-chain-filecoin">
-                <img src="/assets/lp10-filecoin.svg" alt="Filecoin" />
-              </div>
-
-              {/* Bottom Chain Group */}
-              <div className="lp-10-chain-group">
-                <div className="lp-10-chain-icon-small">
-                  <img src="/assets/lp10-optimism.svg" alt="Optimism" />
-                </div>
-                <div className="lp-10-chain-icon-small">
-                  <img src="/assets/lp10-polygon.svg" alt="Polygon" />
-                </div>
-                <div className="lp-10-chain-icon-small">
-                  <img src="/assets/lp10-bnb.svg" alt="BNB Chain" />
-                </div>
-                <div className="lp-10-chain-counter">+34</div>
-              </div>
-            </div>
+            {/* Outer Chain Image */}
+            <img src="/assets/Frame 2147261901.png" alt="Chain Networks" className="lp-10-outer-chain-image" />
 
             {/* Center Chain Icons (static) */}
             <div className="lp-10-chain-icon lp-10-chain-xdc">
-              <img src="/assets/lp10-xdc.svg" alt="XDC" />
+              <img src="/assets/Shape_1_2_.svg" alt="XDC" />
             </div>
 
             <div className="lp-10-chain-icon lp-10-chain-arbitrum-center">

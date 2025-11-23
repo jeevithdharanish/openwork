@@ -24,32 +24,8 @@ const GovernanceSection = () => {
 
         <div className="lp-9-circle-container">
           <div className="lp-9-governance-circle-group">
-            {/* Ellipse Background and Avatars Container (rotates together) */}
-            <div className="lp-9-outer-ring-container">
-              {/* Ellipse Background */}
-              <img src="/public/assets/lp9-ellipse-bg.svg" alt="" className="lp-9-ellipse-bg" />
-
-              {/* Community Avatars */}
-              <div className="lp-9-avatar lp-9-avatar-top">
-                <img src="/public/assets/lp7-oracle-1.png" alt="Member" className="lp-9-avatar-img" />
-              </div>
-
-              <div className="lp-9-avatar lp-9-avatar-left">
-                <img src="/public/assets/lp7-oracle-2.png" alt="Member" className="lp-9-avatar-img" />
-              </div>
-
-              <div className="lp-9-avatar lp-9-avatar-bottom-left">
-                <img src="/public/assets/lp7-oracle-3.png" alt="Member" className="lp-9-avatar-img" />
-              </div>
-
-              <div className="lp-9-avatar lp-9-avatar-bottom-right">
-                <img src="/public/assets/lp7-oracle-4.png" alt="Member" className="lp-9-avatar-img" />
-              </div>
-
-              <div className="lp-9-avatar lp-9-avatar-right">
-                <img src="/public/assets/lp7-oracle-5.png" alt="Member" className="lp-9-avatar-img" />
-              </div>
-            </div>
+            {/* Outer Governance Circle Image */}
+            <img src="/assets/Governercircle.png" alt="Governance Circle" className="lp-9-outer-circle-image" />
 
             {/* Radiant Glow */}
             <div className="lp-9-radiant-glow"></div>
