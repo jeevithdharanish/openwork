@@ -841,6 +841,13 @@ body.sidebar-expanded .lp-1-section {
 }
 
 @media (max-width: 768px) {
+  .landing-main {
+    max-height: none;
+    padding-top: 160px;
+    padding-bottom: 80px;
+    justify-content: flex-start;
+  }
+
   .circle-group {
     width: 500px;
     height: 500px;
@@ -944,7 +951,7 @@ body.sidebar-expanded .lp-1-section {
   .center-content {
     max-width: 90%;
     gap: 36px;
-    margin-top: 40px;
+    margin-top: 80px;
   }
 
   .text-content {
@@ -1038,6 +1045,13 @@ body.sidebar-expanded .lp-1-section {
 }
 
 @media (max-width: 480px) {
+  .landing-main {
+    padding-top: 200px;
+    padding-bottom: 120px;
+    align-items: center;
+  justify-content: center;
+  }
+
   .circle-group {
     width: 350px;
     height: 350px;
@@ -1046,6 +1060,7 @@ body.sidebar-expanded .lp-1-section {
   .radiant-glow-container {
     width: 1670px;
     height: 2290px;
+    visibility: hidden;
    
     top: 128%;
     left: 50%;
@@ -1114,7 +1129,7 @@ body.sidebar-expanded .lp-1-section {
 
   .center-content {
     gap: 32px;
-    margin-top: -100px;
+    margin-top: 0;
   }
 
   .text-content {
