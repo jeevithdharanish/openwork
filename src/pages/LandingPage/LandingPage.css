@@ -9,13 +9,124 @@
 
 /* Main Landing Page Container */
 .landing-page {
-  width: 100vw;
+  width: 99vw;
   min-height: 100vh;
   background: #FFFFFF;
   position: relative;
   overflow-x: hidden;
   scroll-behavior: smooth;
   font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+
+/* Content EXPANDS from CENTER - used when clicking from hero/front page */
+@keyframes expandFromCenter {
+  0% {
+    opacity: 0;
+    transform: scale(0.1);
+    transform-origin: center center;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: center center;
+  }
+}
+
+/* Content expands from center when coming from hero page */
+.page-transition-from-hero {
+  animation: expandFromCenter 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+}
+
+/* Content slides OUT to LEFT + SHRINKS */
+@keyframes slideOutToLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-20%) scale(0.94);
+  }
+}
+
+/* Content slides IN from RIGHT + EXPANDS */
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20%) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* Content slides OUT to RIGHT + SHRINKS */
+@keyframes slideOutToRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(20%) scale(0.94);
+  }
+}
+
+/* Content slides IN from LEFT + EXPANDS */
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20%) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* Going DOWN (top to bottom) - new page slides in from RIGHT */
+.page-transition-down {
+  animation: slideInFromRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Going UP (bottom to top) - new page slides in from LEFT */
+.page-transition-up {
+  animation: slideInFromLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Going DOWN - current page slides out to LEFT */
+
+.page-slide-out-left {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  animation: slideOutToLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Going UP - current page slides out to RIGHT */
+.page-slide-out-right {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  animation: slideOutToRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Sidebar curve stays fixed - only icons move along it */
+.page-slide-out-left .floating-icons,
+.page-slide-out-right .floating-icons,
+.page-transition-down .floating-icons,
+.page-transition-up .floating-icons {
+  position: fixed !important;
+  transform: translateY(-50%) !important;
 }
 
 /* Base Section Wrapper - Applied to all LP sections */

@@ -20,12 +20,35 @@ const LandingSidebar = () => {
     { id: 10, icon: '/assets/sidebar-icon-10.svg', label: 'Work Revolution', section: 'lp-12-section', activeY: -450 },
   ];
 
-  // Mobile-specific items (only 3 items as per Figma)
-  const mobileSidebarItems = [
-    { id: 1, icon: '/assets/sidebar-icon-3.svg', label: 'Set Profile', section: 'lp-2-section' },
-    { id: 2, icon: '/assets/sidebar-icon-1.svg', label: 'Discoverable', section: 'lp-2-section' },
-    { id: 3, icon: '/assets/sidebar-icon-2.svg', label: 'Job/Contract', section: 'lp-4-section' },
-  ];
+  const buildMobileItems = () => {
+    const currentIndex = sidebarItems.findIndex(item => item.section === activeSection);
+    const safeIndex = currentIndex === -1 ? 0 : currentIndex;
+    const prevIndex = safeIndex > 0 ? safeIndex - 1 : null;
+    const nextIndex = safeIndex < sidebarItems.length - 1 ? safeIndex + 1 : null;
+
+    const items = [];
+
+    if (prevIndex !== null) {
+      const prevItem = sidebarItems[prevIndex];
+      items.push({ ...prevItem, id: `${prevItem.id}-prev`, position: 'prev' });
+    } else {
+      items.push({ id: 'placeholder-prev', hidden: true, position: 'prev' });
+    }
+
+    const currentItem = sidebarItems[safeIndex];
+    items.push({ ...currentItem, id: `${currentItem.id}-current`, position: 'current' });
+
+    if (nextIndex !== null) {
+      const nextItem = sidebarItems[nextIndex];
+      items.push({ ...nextItem, id: `${nextItem.id}-next`, position: 'next' });
+    } else {
+      items.push({ id: 'placeholder-next', hidden: true, position: 'next' });
+    }
+
+    return items;
+  };
+
+  const mobileSidebarItems = buildMobileItems();
 
   useEffect(() => {
     const checkMobile = () => {
@@ -49,12 +72,11 @@ const LandingSidebar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight / 2;
-      
-      // Check if profile section (lp-2-section) is reached
-      const profileSection = document.getElementById('lp-2-section');
-      if (profileSection) {
-        const profileTop = profileSection.offsetTop;
-        setSidebarVisible(window.scrollY >= profileTop - 200);
+
+      const secondSection = document.getElementById('lp-2-section');
+      if (secondSection) {
+        const threshold = secondSection.offsetTop - window.innerHeight * 0.2;
+        setSidebarVisible(window.scrollY >= threshold);
       }
 
       // Find which section is currently in view
@@ -75,7 +97,11 @@ const LandingSidebar = () => {
 
     // Add scroll listener
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
 
   const handleScrollToSection = (sectionId) => {
@@ -131,42 +157,8 @@ const LandingSidebar = () => {
     }
   };
 
-  // Get items based on screen size
-  const displayItems = isMobile ? mobileSidebarItems : sidebarItems;
-
-  // For mobile: get previous, current, and next sections
-  const getMobileDisplayItems = () => {
-    if (!isMobile) return displayItems;
-    
-    const currentIndex = sidebarItems.findIndex(item => item.section === activeSection);
-    const prevIndex = currentIndex > 0 ? currentIndex - 1 : null;
-    const nextIndex = currentIndex < sidebarItems.length - 1 ? currentIndex + 1 : null;
-    
-    const items = [];
-    
-    // Previous page (left)
-    if (prevIndex !== null) {
-      items.push({ ...sidebarItems[prevIndex], position: 'prev' });
-    } else {
-      items.push({ id: 'placeholder-prev', icon: '', label: '', section: '', position: 'prev', hidden: true });
-    }
-    
-    // Current page (center)
-    if (currentIndex >= 0) {
-      items.push({ ...sidebarItems[currentIndex], position: 'current' });
-    }
-    
-    // Next page (right)
-    if (nextIndex !== null) {
-      items.push({ ...sidebarItems[nextIndex], position: 'next' });
-    } else {
-      items.push({ id: 'placeholder-next', icon: '', label: '', section: '', position: 'next', hidden: true });
-    }
-    
-    return items;
-  };
-
-  const finalDisplayItems = isMobile ? getMobileDisplayItems() : displayItems;
+  // Pick correct item set
+  const finalDisplayItems = isMobile ? mobileSidebarItems : sidebarItems;
 
   // Preload all icons on component mount
   useEffect(() => {
@@ -186,14 +178,6 @@ const LandingSidebar = () => {
       {/* Navigation icons */}
       <nav className="sidebar-nav">
         {finalDisplayItems.map((item, index) => {
-          const isActive = isMobile ? item.position === 'current' : activeSection === item.section;
-          const position = isMobile ? {} : getIconPosition(index);
-          const distanceFromActive = isMobile ? 0 : index - activeIndex;
-          
-          // For mobile: show all 3 items
-          const isNearActive = Math.abs(distanceFromActive) <= 2;
-          
-          // Skip rendering hidden placeholders
           if (item.hidden) {
             return (
               <div
@@ -205,6 +189,11 @@ const LandingSidebar = () => {
               </div>
             );
           }
+
+          const isActive = activeSection === item.section;
+          const position = isMobile ? {} : getIconPosition(index);
+          const distanceFromActive = isMobile ? 0 : index - activeIndex;
+          const isNearActive = isMobile ? true : Math.abs(distanceFromActive) <= 2;
           
           return (
             <motion.button

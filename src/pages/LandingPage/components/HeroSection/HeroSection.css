@@ -1,24 +1,36 @@
 /* Hero Section (LP-1) */
 
+/* The section wrapper - clip only top and bottom, allow sides to overflow */
+.lp-1-section {
+  clip-path: inset(0 -100% 0 -100%);
+}
+
+/* Remove clip-path when sidebar is expanded so fixed elements are visible */
+body.sidebar-expanded .lp-1-section {
+  clip-path: none;
+}
+
 /* Main Content Area */
 .landing-main {
   width: 100%;
-  min-height: 100vh;
-  padding-top: 64px;
+  height: 100vh;
+  max-height: 75vh;
+  padding-top: 120px;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
 
-/* Glow Wrapper - Masked container */
+/* Glow Wrapper - No clipping */
 .glow-wrapper {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
-  height: 50%;
-  overflow: hidden;
+  height: 100%;
   pointer-events: none;
   z-index: 0;
 }
@@ -29,8 +41,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 700px;
-  height: 700px;
+  width: 600px;
+  height: 600px;
   pointer-events: none;
   z-index: 1;
 }
@@ -58,7 +70,7 @@
   }
 }
 
-/* Main Circle */
+/* Main Circle - White background */
 .main-circle-bg {
   position: absolute;
   top: 50%;
@@ -67,6 +79,7 @@
   width: 580px;
   height: 580px;
   object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 
 /* Floating Icon Buttons */
@@ -102,9 +115,10 @@
   white-space: nowrap;
   padding: 14.667px !important;
   gap: 0;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: none;
   background: linear-gradient(to bottom, #f4f4f4, #fefefe);
   border: 0px solid lightgrey;
+  will-change: width, padding;
 }
 
 /* Hide label text by default */
@@ -116,27 +130,26 @@
   width: 0;
   opacity: 0;
   padding: 0;
-  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
-              opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
-              padding 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-              color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: none;
   overflow: hidden;
   display: inline-block;
 }
 
-/* Expand on hover */
+/* Hover - show label with name */
 .icon-btn:hover {
-  width: auto !important;
-  padding: 14.667px 16px 14.667px 14.667px !important;
-  border-radius: 24px !important;
-  gap: 0;
-  box-shadow: 0 4px 16px rgba(18, 70, 255, 0.25);
+  width: auto;
+  min-width: max-content;
+  padding: 14.667px 16px 14.667px 14.667px;
+  border-radius: 24px;
+  gap: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Show label on hover */
 .icon-btn:hover span {
   width: auto;
   opacity: 1;
-  padding-left: 8px;
+  padding-left: 4px;
   color: #1246FF;
 }
 
@@ -145,7 +158,7 @@
   height: 14.667px !important;
   flex-shrink: 0;
   display: block;
-  transition: filter 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: none;
 }
 
 .icon-btn:hover img {
@@ -175,7 +188,7 @@
 }
 
 .icon-job-progress {
-  left: 63.4%;
+  left: 63.2%;
   top: 17.7%;
 }
 
@@ -205,13 +218,61 @@
 }
 
 .icon-dao {
-  left: 71.1%;
+  left: 71.2%;
   top: 53.5%;
 }
 
 .icon-dao img {
   width: 10.667px !important;
   height: 10.667px !important;
+}
+
+.icon-multichain {
+  left: 79.5%;
+  top: 63.2%;
+}
+
+.icon-multichain img {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.icon-architecture {
+  left: 82%;
+  top: 72%;
+}
+
+.icon-architecture img {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.icon-revolution {
+  left: 84.5%;
+  top: 82%;
+}
+
+.icon-revolution img {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* Hide Earn Token and Multichain icons until the sidebar expands */
+.landing-main:not(.expanded) .icon-earn-token,
+.landing-main:not(.expanded) .icon-multichain,
+.landing-main:not(.expanded) .icon-architecture,
+.landing-main:not(.expanded) .icon-revolution {
+  display: none !important;
+}
+
+.icon-earn-token {
+  left: 65.6%;
+  top: 42.5%;
+}
+
+.icon-earn-token img {
+  width: 17px !important;
+  height: 17px !important;
 }
 
 .icon-set-profile {
@@ -222,6 +283,293 @@
 .icon-set-profile img {
   width: 9.467px !important;
   height: 10.667px !important;
+}
+
+/* Active icon state - no blue border, show label persistently */
+.icon-btn.active {
+  background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
+  border: none !important;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
+  width: auto !important;
+  min-width: max-content;
+  padding: 14.667px 16px 14.667px 14.667px !important;
+  border-radius: 24px !important;
+  gap: 8px;
+  transform: none !important;
+  transition: none !important;
+}
+
+.icon-btn.active img {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(98%) saturate(3089%) hue-rotate(220deg) brightness(101%) contrast(104%);
+}
+
+/* Show label when active - persistent, not just on hover */
+.icon-btn.active span {
+  width: auto;
+  opacity: 1;
+  padding-left: 4px;
+  color: #1246FF;
+  font-weight: 500;
+}
+
+/* ============================================
+   EXPANDED STATE - Fixed sidebar for whole page
+   Circle becomes fixed when scrolling past hero
+   ============================================ */
+
+/* Hide circle when expanded */
+.landing-main.expanded .circle-group {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+}
+
+.landing-main.expanded .main-circle-bg {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+/* Hide glow when expanded/scrolling to other pages */
+.landing-main.expanded .glow-wrapper {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+}
+
+.landing-main.expanded .radiant-glow-container {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+}
+
+.landing-main.expanded .floating-icons {
+  position: fixed;
+  left: 0;
+  top: 55%;
+  /* Curve stays fixed at center */
+  transform: translateY(-50%) !important;
+  width: 180px;
+  height: 700px;
+  transition: none;
+  z-index: 1001;
+  margin-left: 40px;
+  animation: none !important;
+}
+
+/* Icons move smoothly along the curve */
+.landing-main.expanded .icon-btn {
+  transition: top 0.4s cubic-bezier(0.22, 1, 0.36, 1), left 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Radiant glow effect for sidebar - same rotating glow as hero section */
+.sidebar-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1600px;
+  height: 600px;
+  background: url('/assets/RadiantGlow.png') center/contain no-repeat;
+  animation: sidebar-rotate-glow 20s linear infinite;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+  z-index: 1000;
+}
+
+/* Show and position sidebar glow when expanded */
+.landing-main.expanded .sidebar-glow {
+  position: fixed;
+  left: 130px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 1;
+  animation: sidebar-rotate-glow 20s linear infinite;
+}
+
+/* Sidebar rotating glow animation - same as hero */
+@keyframes sidebar-rotate-glow {
+  from {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+/* Make sure floating-icons doesn't clip the glow */
+.landing-main.expanded .floating-icons {
+  overflow: visible;
+}
+
+/* Static curve line (subtle background) */
+.landing-main.expanded .floating-icons::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='700' viewBox='0 0 180 700'%3E%3Cdefs%3E%3ClinearGradient id='lineGrad' x1='0%25' y1='100%25' x2='0%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%231246FF'/%3E%3Cstop offset='80%25' stop-color='%231246FF'/%3E%3Cstop offset='100%25' stop-color='%23D1E4F7' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M 160 0 Q 30 175, 30 350 Q 30 525, 160 700' stroke='url(%23lineGrad)' stroke-width='3' fill='none' stroke-linecap='round' stroke-dasharray='950' stroke-dashoffset='-950'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 100% 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  animation: showGlowLine 0.2s ease-out 0.4s forwards;
+}
+
+/* Keyframes for delayed glow line appearance */
+@keyframes showGlowLine {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Separate element for the traveling glow animation */
+.landing-main.expanded .floating-icons::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='700' viewBox='0 0 180 700'%3E%3Cdefs%3E%3ClinearGradient id='glowGrad' x1='0%25' y1='100%25' x2='0%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%231246FF'/%3E%3Cstop offset='80%25' stop-color='%231246FF'/%3E%3Cstop offset='100%25' stop-color='%23D1E4F7' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cstyle%3E.glow %7B stroke-dasharray: 950; stroke-dashoffset: -950; animation: travelGlow 5s linear infinite; %7D @keyframes travelGlow %7B 0%25 %7B stroke-dashoffset: -950; %7D 100%25 %7B stroke-dashoffset: 950; %7D %7D%3C/style%3E%3Cpath class='glow' d='M 160 0 Q 30 175, 30 350 Q 30 525, 160 700' stroke='url(%23glowGrad)' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 100% 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  animation: startGlowAnimation 0.2s ease-out 0.5s forwards;
+}
+
+@keyframes startGlowAnimation {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Hide the glow elements - line animation is the effect now */
+.landing-main.expanded .floating-icons .traveling-glow,
+.landing-main.expanded .floating-icons .traveling-glow-bottom {
+  display: none;
+}
+
+/* ============================================
+   CURVE POSITIONS - 7 slots along the arc
+   Position 0 (top): left: 93px, top: 8%
+   Position 1: left: 55px, top: 20%
+   Position 2: left: 20px, top: 34%
+   Position 3 (center): left: 15px, top: 50%
+   Position 4: left: 30px, top: 66%
+   Position 5: left: 75px, top: 82%
+   Position 6 (bottom): left: 129px, top: 95%
+   ============================================ */
+
+/* Default positions - direct-contract (index 3) is at center */
+.landing-main.expanded .icon-set-profile { left: 93px; top: 8%; transform: none; }
+.landing-main.expanded .icon-discoverable { left: 55px; top: 20%; transform: none; }
+.landing-main.expanded .icon-post-job { left: 20px; top: 34%; transform: none; }
+.landing-main.expanded .icon-direct-contract { left: 15px; top: 50%; transform: none; }
+.landing-main.expanded .icon-job-progress { left: 30px; top: 66%; transform: none; }
+.landing-main.expanded .icon-raise-dispute { left: 75px; top: 82%; transform: none; }
+.landing-main.expanded .icon-dao { left: 129px; top: 95%; transform: none; }
+
+/* ============================================
+   DYNAMIC POSITIONS - Icons shift when active changes
+   Icon order: set-profile(0), discoverable(1), post-job(2), 
+               direct-contract(3), job-progress(4), raise-dispute(5), dao(6)
+   ============================================ */
+
+/* Active: set-profile (index 0) - shift all icons DOWN so set-profile is at center */
+.landing-main.expanded .floating-icons.active-pos-0 .icon-set-profile { left: 15px; top: 50%; }
+.landing-main.expanded .floating-icons.active-pos-0 .icon-discoverable { left: 30px; top: 66%; }
+.landing-main.expanded .floating-icons.active-pos-0 .icon-post-job { left: 75px; top: 82%; }
+.landing-main.expanded .floating-icons.active-pos-0 .icon-direct-contract { left: 129px; top: 95%; }
+.landing-main.expanded .floating-icons.active-pos-0 .icon-job-progress { opacity: 0; top: 110%; }
+.landing-main.expanded .floating-icons.active-pos-0 .icon-raise-dispute { opacity: 0; top: 120%; }
+.landing-main.expanded .floating-icons.active-pos-0 .icon-dao { opacity: 0; top: 130%; }
+
+/* Active: discoverable (index 1) - shift icons so discoverable is at center */
+.landing-main.expanded .floating-icons.active-pos-1 .icon-set-profile { left: 55px; top: 20%; }
+.landing-main.expanded .floating-icons.active-pos-1 .icon-discoverable { left: 15px; top: 50%; }
+.landing-main.expanded .floating-icons.active-pos-1 .icon-post-job { left: 30px; top: 66%; }
+.landing-main.expanded .floating-icons.active-pos-1 .icon-direct-contract { left: 75px; top: 82%; }
+.landing-main.expanded .floating-icons.active-pos-1 .icon-job-progress { left: 129px; top: 95%; }
+.landing-main.expanded .floating-icons.active-pos-1 .icon-raise-dispute { opacity: 0; top: 110%; }
+.landing-main.expanded .floating-icons.active-pos-1 .icon-dao { opacity: 0; top: 120%; }
+
+/* Active: post-job (index 2) - shift icons so post-job is at center */
+.landing-main.expanded .floating-icons.active-pos-2 .icon-set-profile { left: 93px; top: 8%; }
+.landing-main.expanded .floating-icons.active-pos-2 .icon-discoverable { left: 55px; top: 20%; }
+.landing-main.expanded .floating-icons.active-pos-2 .icon-post-job { left: 15px; top: 50%; }
+.landing-main.expanded .floating-icons.active-pos-2 .icon-direct-contract { left: 30px; top: 66%; }
+.landing-main.expanded .floating-icons.active-pos-2 .icon-job-progress { left: 75px; top: 82%; }
+.landing-main.expanded .floating-icons.active-pos-2 .icon-raise-dispute { left: 129px; top: 95%; }
+.landing-main.expanded .floating-icons.active-pos-2 .icon-dao { opacity: 0; top: 110%; }
+
+/* Active: direct-contract (index 3) - DEFAULT, all icons in natural positions */
+/* Already defined above */
+
+/* Active: job-progress (index 4) - shift icons UP so job-progress is at center */
+.landing-main.expanded .floating-icons.active-pos-4 .icon-set-profile { opacity: 0; top: -10%; }
+.landing-main.expanded .floating-icons.active-pos-4 .icon-discoverable { left: 93px; top: 8%; }
+.landing-main.expanded .floating-icons.active-pos-4 .icon-post-job { left: 55px; top: 20%; }
+.landing-main.expanded .floating-icons.active-pos-4 .icon-direct-contract { left: 20px; top: 34%; }
+.landing-main.expanded .floating-icons.active-pos-4 .icon-job-progress { left: 15px; top: 50%; }
+.landing-main.expanded .floating-icons.active-pos-4 .icon-raise-dispute { left: 30px; top: 66%; }
+.landing-main.expanded .floating-icons.active-pos-4 .icon-dao { left: 75px; top: 82%; }
+
+/* Active: raise-dispute (index 5) - shift icons UP so raise-dispute is at center */
+.landing-main.expanded .floating-icons.active-pos-5 .icon-set-profile { opacity: 0; top: -20%; }
+.landing-main.expanded .floating-icons.active-pos-5 .icon-discoverable { opacity: 0; top: -10%; }
+.landing-main.expanded .floating-icons.active-pos-5 .icon-post-job { left: 93px; top: 8%; }
+.landing-main.expanded .floating-icons.active-pos-5 .icon-direct-contract { left: 55px; top: 20%; }
+.landing-main.expanded .floating-icons.active-pos-5 .icon-job-progress { left: 20px; top: 34%; }
+.landing-main.expanded .floating-icons.active-pos-5 .icon-raise-dispute { left: 15px; top: 50%; }
+.landing-main.expanded .floating-icons.active-pos-5 .icon-dao { left: 30px; top: 66%; }
+
+/* Active: dao (index 6) - shift all icons UP so dao is at center */
+.landing-main.expanded .floating-icons.active-pos-6 .icon-set-profile { opacity: 0; top: -30%; }
+.landing-main.expanded .floating-icons.active-pos-6 .icon-discoverable { opacity: 0; top: -20%; }
+.landing-main.expanded .floating-icons.active-pos-6 .icon-post-job { opacity: 0; top: -10%; }
+.landing-main.expanded .floating-icons.active-pos-6 .icon-direct-contract { left: 93px; top: 8%; }
+.landing-main.expanded .floating-icons.active-pos-6 .icon-job-progress { left: 55px; top: 20%; }
+.landing-main.expanded .floating-icons.active-pos-6 .icon-raise-dispute { left: 20px; top: 34%; }
+.landing-main.expanded .floating-icons.active-pos-6 .icon-dao { left: 15px; top: 50%; }
+
+/* Smooth opacity transition for icons going off-screen */
+.landing-main.expanded .icon-btn {
+  transition: top 0.4s cubic-bezier(0.22, 1, 0.36, 1), 
+              left 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.3s ease-out;
+}
+
+
+/* Hide center content when expanded */
+.landing-main.expanded .center-content {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Transition for normal state */
+.circle-group,
+.main-circle-bg,
+.radiant-glow-container,
+.center-content {
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Smooth transition for floating icons and icon buttons */
+.floating-icons {
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.icon-btn {
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Center Content */
@@ -259,7 +607,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
-  color: #767676;
+  color: #aaa7a7;
   margin: 0;
 }
 
@@ -325,7 +673,7 @@
   }
   
   .icon-job-progress {
-    left: 65.6%;
+    left: 61.2%;
     top: 15.5%;
   }
 
@@ -335,12 +683,12 @@
   }
 
   .icon-raise-dispute {
-    left: 72%;
+    left: 66.8%;
     top: 32.5%;
   }
 
   .icon-dao {
-    left: 73.3%;
+    left: 68.2%;
     top: 54%;
   }
 
@@ -389,7 +737,7 @@
     transform: translateX(-50%);
   }
   .icon-job-progress {
-    left: 65.5%;
+    left: 61.2%;
     top: 14.5%;
   }
 
@@ -399,12 +747,12 @@
   }
 
   .icon-raise-dispute {
-    left: 73%;
+    left: 67.2%;
     top: 32%;
   }
 
   .icon-dao {
-    left: 74.5%;
+    left: 68.9%;
     top: 55%;
   }
 
@@ -448,7 +796,7 @@
     transform: translateX(-50%);
   }
   .icon-job-progress {
-    left: 67.5%;
+    left: 63%;
     top: 10.5%;
   }
 
@@ -458,12 +806,12 @@
   }
 
   .icon-raise-dispute {
-    left: 76%;
+    left: 70%;
     top: 32%;
   }
 
   .icon-dao {
-    left: 76.5%;
+    left: 71%;
     top: 55%;
   }
 
@@ -508,9 +856,9 @@
     height: 460px;
   }
 
-  .floating-icons {
-    width: 780px;
-    height: 470px;
+  .floating-icons,
+  .landing-main.expanded .floating-icons {
+    display: none;
   }
 
   /* Adjust icon positions for tablets - show only 3 icons on arc */
@@ -696,9 +1044,10 @@
   }
 
   .radiant-glow-container {
-    width: 800px;
-    height: 800px;
-    top: 125%;
+    width: 1670px;
+    height: 2290px;
+   
+    top: 128%;
     left: 50%;
     transform: translateX(-50%);
   }
