@@ -1055,6 +1055,7 @@ body.sidebar-expanded .lp-1-section {
   }
 
   .circle-group {
+    
     width: 350px;
  
     height: 350px;
@@ -1188,12 +1189,12 @@ body.sidebar-expanded .lp-1-section {
   }
 
   .navbar-icon-2 {
-    right: -5%;
+    right: -1%;
     top: -13%;
   }
 
   .navbar-icon-3 {
-    left: -5%;
+    left: -1%;
     top: -13%;
   }
 }

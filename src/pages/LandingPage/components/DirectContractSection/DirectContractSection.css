@@ -304,7 +304,7 @@
   }
 
   .contract-circle-section {
-    width: min(340px, 90vw);
+    width: min(340px, 50vw);
   }
 
   .contract-circle-group {

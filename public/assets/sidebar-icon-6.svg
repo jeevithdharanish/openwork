@@ -1,7 +1,7 @@
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-	<rect x="5" y="4" width="14" height="13" rx="2" stroke="#C9C9C9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-	<path d="M9 8H15" stroke="#C9C9C9" stroke-width="1.6" stroke-linecap="round"/>
-	<path d="M9 11H13" stroke="#C9C9C9" stroke-width="1.6" stroke-linecap="round"/>
-	<circle cx="12" cy="17.5" r="2.5" fill="#F4F4F4" fill-opacity="0.95" stroke="#C9C9C9" stroke-width="1.6"/>
-	<path d="M8.5 20.5C8.5 18.8431 9.84315 17.5 11.5 17.5H12.5C14.1569 17.5 15.5 18.8431 15.5 20.5" stroke="#C9C9C9" stroke-width="1.6" stroke-linecap="round"/>
+	<rect x="5" y="4" width="14" height="13" rx="2" stroke="#6B6F7C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+	<path d="M9 8H15" stroke="#6B6F7C" stroke-width="1.6" stroke-linecap="round"/>
+	<path d="M9 11H13" stroke="#6B6F7C" stroke-width="1.6" stroke-linecap="round"/>
+	<circle cx="12" cy="17.5" r="2.5" fill="#F1F2F5" fill-opacity="0.95" stroke="#6B6F7C" stroke-width="1.6"/>
+	<path d="M8.5 20.5C8.5 18.8431 9.84315 17.5 11.5 17.5H12.5C14.1569 17.5 15.5 18.8431 15.5 20.5" stroke="#6B6F7C" stroke-width="1.6" stroke-linecap="round"/>
 </svg>
