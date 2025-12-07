@@ -410,7 +410,7 @@ body.sidebar-expanded .lp-1-section {
   top: 0;
   width: 100%;
   height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='700' viewBox='0 0 180 700'%3E%3Cdefs%3E%3ClinearGradient id='lineGrad' x1='0%25' y1='100%25' x2='0%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%231246FF'/%3E%3Cstop offset='80%25' stop-color='%231246FF'/%3E%3Cstop offset='100%25' stop-color='%23D1E4F7' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M 160 0 Q 30 175, 30 350 Q 30 525, 160 700' stroke='url(%23lineGrad)' stroke-width='3' fill='none' stroke-linecap='round' stroke-dasharray='950' stroke-dashoffset='-950'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='700' viewBox='0 0 180 700'%3E%3Cdefs%3E%3ClinearGradient id='lineGrad' x1='0%25' y1='100%25' x2='0%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%231246FF' stop-opacity='0'/%3E%3Cstop offset='35%25' stop-color='%231246FF' stop-opacity='1'/%3E%3Cstop offset='65%25' stop-color='%231246FF' stop-opacity='1'/%3E%3Cstop offset='100%25' stop-color='%231246FF' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M 160 0 Q 30 175, 30 350 Q 30 525, 160 700' stroke='url(%23lineGrad)' stroke-width='5' fill='none' stroke-linecap='round' stroke-dasharray='950' stroke-dashoffset='-950'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: left top;
   background-size: 100% 100%;
@@ -435,7 +435,8 @@ body.sidebar-expanded .lp-1-section {
   top: 0;
   width: 100%;
   height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='700' viewBox='0 0 180 700'%3E%3Cdefs%3E%3ClinearGradient id='glowGrad' x1='0%25' y1='100%25' x2='0%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%231246FF'/%3E%3Cstop offset='80%25' stop-color='%231246FF'/%3E%3Cstop offset='100%25' stop-color='%23D1E4F7' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cstyle%3E.glow %7B stroke-dasharray: 950; stroke-dashoffset: -950; animation: travelGlow 5s linear infinite; %7D @keyframes travelGlow %7B 0%25 %7B stroke-dashoffset: -950; %7D 100%25 %7B stroke-dashoffset: 950; %7D %7D%3C/style%3E%3Cpath class='glow' d='M 160 0 Q 30 175, 30 350 Q 30 525, 160 700' stroke='url(%23glowGrad)' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='700' viewBox='0 0 180 700'%3E%3Cdefs%3E%3ClinearGradient id='glowGrad' x1='0%25' y1='100%25' x2='0%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%231246FF' stop-opacity='0'/%3E%3Cstop offset='35%25' stop-color='%231246FF' stop-opacity='1'/%3E%3Cstop offset='65%25' stop-color='%231246FF' stop-opacity='1'/%3E%3Cstop offset='100%25' stop-color='%231246FF' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cstyle%3E.glow %7B stroke-dasharray: 950; stroke-dashoffset: -950; animation: travelGlow 5s linear infinite; %7D @keyframes travelGlow %7B 0%25 %7B stroke-dashoffset: -950; %7D 100%25 %7B stroke-dashoffset: 950; %7D %7D%3C/style%3E%3Cpath class='glow' d='M 160 0 Q 30 175, 30 350 Q 30 525, 160 700' stroke='url(%23glowGrad)' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  
   background-repeat: no-repeat;
   background-position: left top;
   background-size: 100% 100%;
@@ -1047,6 +1048,7 @@ body.sidebar-expanded .lp-1-section {
 @media (max-width: 480px) {
   .landing-main {
     padding-top: 200px;
+    
     padding-bottom: 120px;
     align-items: center;
   justify-content: center;
@@ -1054,15 +1056,17 @@ body.sidebar-expanded .lp-1-section {
 
   .circle-group {
     width: 350px;
+ 
     height: 350px;
   }
 
   .radiant-glow-container {
-    width: 1670px;
-    height: 2290px;
+    width: 1770px;
+    height: 1290px;
+    position: absolute;
     visibility: hidden;
    
-    top: 128%;
+    top: 100%;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -1070,6 +1074,7 @@ body.sidebar-expanded .lp-1-section {
   .main-circle-bg {
     width: 500px;
     height: 550px;
+    
     transform: translate(-50%, -40%);
     object-fit: cover;
     object-position: center top;

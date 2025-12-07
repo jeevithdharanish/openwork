@@ -9,6 +9,7 @@
 
 /* Main Landing Page Container */
 .landing-page {
+  margin-top: 60px;
   width: 99vw;
   min-height: 100vh;
   background: #FFFFFF;
