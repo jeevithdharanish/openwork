@@ -196,6 +196,15 @@ const HeroSection = () => {
     return () => document.body.classList.remove('sidebar-expanded');
   }, [isExpanded]);
 
+  const getMobileNavOffset = () => {
+    if (typeof window === 'undefined') return 0;
+    const isMobile = window.matchMedia('(max-width: 480px)').matches;
+    if (!isMobile) return 0;
+    const header = document.querySelector('.landing-header');
+    const headerHeight = header ? header.offsetHeight : 0;
+    return headerHeight + 16;
+  };
+
   const handleIconClick = (iconName, sectionId) => {
     setActiveIcon(iconName);
     const targetSection = document.getElementById(sectionId);
@@ -204,7 +213,9 @@ const HeroSection = () => {
       // Find current visible section
       const allSections = document.querySelectorAll('.lp-section');
       const currentScrollY = window.scrollY;
-      const targetScrollY = targetSection.offsetTop;
+      const targetSectionTop = targetSection.offsetTop;
+      const scrollOffset = getMobileNavOffset();
+      const targetScrollY = Math.max(targetSectionTop - scrollOffset, 0);
       
       let currentSection = null;
       allSections.forEach(section => {
@@ -219,7 +230,7 @@ const HeroSection = () => {
       if (currentSection === targetSection) return;
       
       // Determine direction
-      const isGoingDown = targetScrollY > currentScrollY;
+      const isGoingDown = targetSectionTop > currentScrollY;
       
       // Check if we're in hero section
       const isFromHero = currentSection?.classList.contains('lp-1-section');
@@ -276,8 +287,13 @@ const HeroSection = () => {
   };
 
   const handleLearnMore = () => {
-    document.getElementById('lp-2-section').scrollIntoView({ 
-      behavior: 'smooth' 
+    const learnMoreSection = document.getElementById('lp-2-section');
+    if (!learnMoreSection) return;
+    const scrollOffset = getMobileNavOffset();
+    const target = Math.max(learnMoreSection.offsetTop - scrollOffset, 0);
+    window.scrollTo({
+      top: target,
+      behavior: 'smooth'
     });
   };
 
