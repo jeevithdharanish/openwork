@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './LandingSidebar.css';
 
@@ -6,6 +6,8 @@ const LandingSidebar = () => {
   const [activeSection, setActiveSection] = useState('discoverable');
   const [sidebarVisible, setSidebarVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [scrollDirection, setScrollDirection] = useState('down');
+  const lastScrollY = useRef(0);
 
   const sidebarItems = [
     { id: 1, icon: '/assets/sidebar-icon-1.svg', label: 'Discoverable', section: 'lp-2-section', activeY: -150 },
@@ -52,7 +54,7 @@ const LandingSidebar = () => {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 1024);
     };
     
     checkMobile();
@@ -71,12 +73,19 @@ const LandingSidebar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      const currentY = window.scrollY;
+      if (Math.abs(currentY - lastScrollY.current) > 6) {
+        const nextDirection = currentY > lastScrollY.current ? 'down' : 'up';
+        setScrollDirection(prev => (prev !== nextDirection ? nextDirection : prev));
+        lastScrollY.current = currentY;
+      }
+
+      const scrollPosition = currentY + window.innerHeight / 2;
 
       const secondSection = document.getElementById('lp-2-section');
       if (secondSection) {
         const threshold = secondSection.offsetTop - window.innerHeight * 0.2;
-        setSidebarVisible(window.scrollY >= threshold);
+        setSidebarVisible(currentY >= threshold);
       }
 
       // Find which section is currently in view
@@ -171,7 +180,9 @@ const LandingSidebar = () => {
   }, []);
 
   return (
-    <aside className={`landing-sidebar ${sidebarVisible ? 'visible' : ''}`}>
+    <aside
+      className={`landing-sidebar ${sidebarVisible ? 'visible' : ''} ${scrollDirection === 'down' ? 'scroll-down' : 'scroll-up'}`}
+    >
       {/* Vertical gradient line */}
       <div className="sidebar-line"></div>
 
