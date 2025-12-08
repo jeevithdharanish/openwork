@@ -402,8 +402,8 @@
   .landing-sidebar {
     margin-left: 0px;
     margin-right: 0px;
-    width: calc(100% - 16px);
-    height: 60px;
+    width: calc(200% - 16px);
+    height: 69px;
     top: 56px;
     padding: 0 1px;
     
@@ -415,7 +415,7 @@
   }
 
   .sidebar-nav {
-    gap: 40px;
+    gap: 10px;
    
   }
 
