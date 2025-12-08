@@ -219,13 +219,13 @@
     transform: translate(-50%, 0) scale(1);
   }
 
-  .landing-sidebar.scroll-down {
+  /* .landing-sidebar.scroll-down {
     --scroll-shift: -18px;
   }
 
   .landing-sidebar.scroll-up {
     --scroll-shift: 18px;
-  }
+  } */
 
   /* Horizontal line background */
   .landing-sidebar::before {
@@ -400,11 +400,14 @@
 
 @media (max-width: 480px) {
   .landing-sidebar {
+    margin-left: 0px;
+    margin-right: 0px;
     width: calc(100% - 16px);
-    height: 56px;
+    height: 60px;
     top: 56px;
-    padding: 0 18px;
-    transform: translate(-50%, -16px) scale(0.9);
+    padding: 0 1px;
+    
+    transform: translate(-50%, -50px) scale(0.9);
   }
 
   .landing-sidebar.visible {
@@ -413,6 +416,7 @@
 
   .sidebar-nav {
     gap: 40px;
+   
   }
 
   .sidebar-nav-item {
@@ -431,10 +435,10 @@
   }
 
   .sidebar-nav-item:nth-child(1) {
-    margin-right: 80px;
+    margin-right: 70px;
   }
 
   .sidebar-nav-item:nth-child(2) {
-    margin-right: 80px;
+    margin-right: 70px;
   }
 }

@@ -839,6 +839,22 @@ body.sidebar-expanded .lp-1-section {
     font-size: 15px;
     line-height: 22px;
   }
+
+  /* Keep floating icons in circle layout instead of forming sidebar */
+  .landing-main.expanded .floating-icons {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 950px;
+    height: 570px;
+    margin-left: 0;
+  }
+
+  /* Disable sidebar glow on tablet widths */
+  .landing-main.expanded .sidebar-glow {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1065,33 +1081,52 @@ body.sidebar-expanded .lp-1-section {
    justify-content: center;
   }
 
-  .circle-group {
-    
+  .circle-group {   
     width: 350px;
- 
     height: 350px;
   }
 
   .radiant-glow-container {
-    width: 1670px;
-    height: 1300px;
-    position: absolute;
-    
-   
+    width: 1600px;
+    height: 1230px;
+    position:absolute; 
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
+    animation: rotate-glow 5s linear infinite;
   }
+     /* Radiant Glow */
+/* .radiant-glow-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: url('/assets/RadiantGlow.png') center/contain no-repeat;
+  animation: rotate-glow 10s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+} */
 
   .main-circle-bg {
     width: 500px;
-    height: 550px;
-    
+    height: 550px;   
     transform: translate(-50%, -40%);
     object-fit: cover;
     object-position: center top;
     content: url('/assets/Ellipse 57.png');
   }
+
+
+@keyframes rotate-glow {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
 
   .floating-icons {
     width: 6500px;

@@ -3,8 +3,13 @@ import Button from '../../../../components/Button/Button';
 import './HeroSection.css';
 
 const HeroSection = () => {
+  //  const Mobile = window.matchMedia('(max-width: 480px)').matches;
   const [isExpanded, setIsExpanded] = useState(false);
   const [activeIcon, setActiveIcon] = useState(null);
+  const [isDesktop, setIsDesktop] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    return window.innerWidth > 1024;
+  });
 
   const iconConfigs = [
     {
@@ -136,6 +141,12 @@ const HeroSection = () => {
   // Auto-expand sidebar and detect active section based on scroll
   useEffect(() => {
     const handleScroll = () => {
+      if (!isDesktop) {
+        setIsExpanded(false);
+        setActiveIcon(null);
+        return;
+      }
+
       const heroSection = document.querySelector('.lp-1-section');
       if (heroSection) {
         const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
@@ -184,6 +195,16 @@ const HeroSection = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, [isDesktop]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth > 1024);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   // Add class to body when sidebar is expanded
@@ -307,7 +328,7 @@ const HeroSection = () => {
         {/* Glow Wrapper with Mask */}
         <div className="glow-wrapper">
           {/* Radiant Glow Background */}
-          <div className="radiant-glow-container"></div>
+          <div className="radiant-glow-container"></div> 
         </div>
 
         {/* Background Circle Group */}
