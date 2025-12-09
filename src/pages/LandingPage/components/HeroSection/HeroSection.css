@@ -47,6 +47,39 @@ body.sidebar-expanded .lp-1-section {
   z-index: 1;
 }
 
+/* Rotating arc border (top quadrant) */
+.circle-arc {
+  position: absolute;
+  top: 77%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300%;
+  height: 180%;
+  pointer-events: none;
+  z-index: 3; /* above circle bg, under center content (z-index 10) */
+  display: none; /* hidden by default, shown only on mobile */
+}
+
+.circle-arc-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+  animation: rotate-arc 12s linear infinite;
+  will-change: transform;
+}
+
+@keyframes rotate-arc {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.circle-arc-svg path {
+  opacity: 0.98;
+}
+
+
 /* Radiant Glow */
 .radiant-glow-container {
   position: absolute;
@@ -1019,10 +1052,12 @@ body.sidebar-expanded .lp-1-section {
     pointer-events: all;
     cursor: pointer;
     transition: all 0.3s ease;
+    --navbar-icon-transform: none;
+    transform: var(--navbar-icon-transform);
   }
 
   .navbar-icon-btn:hover {
-    transform: scale(1.1);
+    transform: var(--navbar-icon-transform) scale(1.1);
     border-color: #1246FF;
     box-shadow: 0 4px 16px rgba(18, 70, 255, 0.25);
   }
@@ -1052,19 +1087,19 @@ body.sidebar-expanded .lp-1-section {
   .navbar-icon-bot {
     left: 50%;
     top: -16%;
-    transform: translateX(-50%);
+    --navbar-icon-transform: translateX(-50%);
   }
 
   .navbar-icon-2 {
     right: 94%;
     top: 10%;
-    transform: none;
+    --navbar-icon-transform: none;
   }
 
   .navbar-icon-3 {
     left: 94%;
     top: 10%;
-    transform: none;
+    --navbar-icon-transform: none;
   }
 
   .lp-section:not(.lp-1-section) {
@@ -1084,16 +1119,46 @@ body.sidebar-expanded .lp-1-section {
   .circle-group {   
     width: 350px;
     height: 350px;
+    position: absolute;
   }
+
+  /* Show rotating arc only on narrow mobile screens */
+  .circle-arc {
+    display: block;
+    width: 200%;
+    height: 200%;
+  }
+
+  .circle-arc-svg {
+    animation: rotate-arc 9s linear infinite;
+  }
+
+  /* .circle-group::after {
+    content: '';
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    width: 690px;
+    height: 490px;
+    transform: translate(-50%, -52%);
+    border-radius: 50%;
+    
+    border: 2px solid rgba(18, 70, 255, 0.95);
+    
+    box-shadow: 0 0 28px rgba(18, 70, 255, 0.28), inset 0 0 16px rgba(18, 70, 255, 0.25);
+    /* background: radial-gradient(circle, rgba(18, 70, 255, 0.15) 0%, rgba(18, 70, 255, 0.08) 60%, rgba(18, 70, 255, 0) 100%); */
+    /* pointer-events: none;
+  } */ */
 
   .radiant-glow-container {
     width: 1600px;
-    height: 1230px;
+    height: 1290px;
     position:absolute; 
     top: 100%;
     left: 50%;
+    
     transform: translateX(-50%);
-    animation: rotate-glow 5s linear infinite;
+     animation: rotate-glow 4.5s linear infinite; 
   }
      /* Radiant Glow */
 /* .radiant-glow-container {
@@ -1110,12 +1175,14 @@ body.sidebar-expanded .lp-1-section {
 } */
 
   .main-circle-bg {
-    width: 500px;
-    height: 550px;   
-    transform: translate(-50%, -40%);
+    width: 780px;
+    height: 850px; 
+    margin-top: 150px;  
+    transform: translate(-50%, -50%);
     object-fit: cover;
     object-position: center top;
-    content: url('/assets/Ellipse 57.png');
+    
+    /* content: url('/assets/Ellipse 57.png'); */
   }
 
 
@@ -1216,32 +1283,32 @@ body.sidebar-expanded .lp-1-section {
 
   /* Individual navbar icon sizes for mobile */
   .navbar-icon-bot img {
-    width: 18px !important;
-    height: 18px !important;
+    width: 16px !important;
+    height: 16px !important;
   }
 
   .navbar-icon-2 img {
-    width: 18px !important;
-    height: 18px !important;
+    width: 16px !important;
+    height: 16px !important;
   }
 
   .navbar-icon-3 img {
-    width: 18px !important;
-    height: 18px !important;
+    width: 16px !important;
+    height: 16px !important;
   }
 
   .navbar-icon-bot {
-    top: -25%;
+    top: -27%;
   }
 
   .navbar-icon-2 {
     right: -1%;
-    top: -13%;
+    top: -18%;
   }
 
   .navbar-icon-3 {
     left: -1%;
-    top: -13%;
+    top: -18%;
   }
 
   .lp-section:not(.lp-1-section) {

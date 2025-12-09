@@ -339,6 +339,30 @@ const HeroSection = () => {
             alt="" 
             className="main-circle-bg"
           />
+          {/* Rotating Arc Border */}
+          <div className="circle-arc" aria-hidden="true">
+            <svg viewBox="0 0 600 600" className="circle-arc-svg" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <linearGradient id="arcGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#1246FF" stopOpacity="1" />
+                  <stop offset="100%" stopColor="#1246FF" stopOpacity="1" />
+                </linearGradient>
+                <filter id="arcGlow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="6" result="b" />
+                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              {/* top arc only */}
+              <path
+                d="M 24 300 A 276 276 0 0 1 576 300"
+                stroke="url(#arcGradient)"
+                strokeWidth="2"
+                fill="none"
+                strokeLinecap="round"
+                filter="url(#arcGlow)"
+              />
+            </svg>
+          </div>
         </div>
 
         {/* Floating Icon Buttons - Icons move along the curve, active icon at center */}
