@@ -154,7 +154,7 @@
   min-width: 120px;
   padding-right: 16px;
   border-radius: 20px;
-  border: 1px solid #1246FF;
+  border: 0px solid #1246FF;
   background: linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);
   box-shadow: 0px 0px 0.408px 1.223px rgba(0, 0, 0, 0.05), 
               0px 4.89px 5.298px -2.445px rgba(0, 0, 0, 0.1);
@@ -183,7 +183,7 @@
   background: linear-gradient(180deg, #f4f4f4 0%, #fefefe 100%);
   box-shadow: 0px 0px 0.408px 1.223px rgba(0, 0, 0, 0.05), 
               0px 4.89px 5.298px -2.445px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(18, 70, 255, 0.4);
+   border: 1px solid rgba(18, 70, 255, 0.4); 
 }
 
 .sidebar-nav-item.active img {
@@ -244,7 +244,7 @@
     pointer-events: none;
     transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1),
                 opacity 0.35s ease,
-                box-shadow 0.3s ease;
+                box-shadow 0.3s ease;}
   }
 
   .landing-sidebar.visible {
@@ -406,7 +406,7 @@
     height: 18px;
     display: block;
   }
-}
+
 
 @media (max-width: 768px) {
   .landing-sidebar {
@@ -445,6 +445,8 @@
     mask-image: linear-gradient(180deg, black 0%, black 82%, rgba(0,0,0,0) 100%);
  
   } 
+
+  
 
   .landing-sidebar::before {
     width: calc(100% - 140px);
@@ -499,22 +501,24 @@
     transform: translate(-50%, 0) scale(0.96);
   }
 
+  
   .sidebar-nav {
     gap: 10px;
-   
+  }
 
   /* Adjust horizontal line position so it aligns with nav items that translate down */
   .landing-sidebar::before {
     top: calc(50% + 6px);
     height: 1px;
   }
-  }
+  
 
   .sidebar-nav-item {
     width: 40px;
     height: 40px;
     padding: 10px;
     transform: translate3d(var(--scroll-shift, 0px), 24px, 0) scale(0.85);
+    
   }
 
   .landing-sidebar.visible .sidebar-nav-item {
