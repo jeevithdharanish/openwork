@@ -3,6 +3,7 @@
 .lp-10-section {
   width: 100%;
   min-height: 734px;
+  margin-left: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -237,6 +238,7 @@
 /* Responsive Design */
 @media (max-width: 1440px) {
   .lp-10-container {
+    margin-left: 120px;
     padding: 0 120px;
     gap: 70px;
   }

@@ -2,6 +2,7 @@
 .lp-4-section {
   background: #FFFFFF;
   padding-top: 64px;
+  margin-left: 50px;
 }
 
 .lp-4-container {
@@ -52,6 +53,7 @@
 /* Responsive */
 @media (max-width: 1440px) {
   .lp-4-container {
+    margin-left: 120px;
     padding: 0 80px;
   }
 }

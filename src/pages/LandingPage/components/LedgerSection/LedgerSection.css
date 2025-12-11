@@ -1,6 +1,7 @@
 /* Ledger Section (LP-3) */
 .lp-3-section {
   background: #FFFFFF;
+  margin-left: 50px;
   padding-top: 64px;
 }
 
@@ -58,6 +59,7 @@
 /* Responsive */
 @media (max-width: 1440px) {
   .lp-3-container {
+    margin-left:120px;
     padding: 0 80px;
   }
 }
