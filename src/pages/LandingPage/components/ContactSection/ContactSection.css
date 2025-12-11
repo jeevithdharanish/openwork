@@ -2,7 +2,7 @@
 
 .lp-13-section {
   width: 100%;
-  margin-left: 50px;
+  /* margin-left: 50px; */
   min-height: 734px;
   display: flex;
   align-items: center;
@@ -142,7 +142,7 @@
 /* Responsive Design */
 @media (max-width: 1440px) {
   .lp-13-container {
-    margin-left: 120px;
+    /* margin-left: 120px; */
     padding: 0 120px;
     gap: 70px;
   }
@@ -164,6 +164,7 @@
 
 @media (max-width: 1024px) {
   .lp-13-container {
+     /* margin-left: -85px; */
     padding: 0 80px;
     gap: 50px;
     flex-direction: column;

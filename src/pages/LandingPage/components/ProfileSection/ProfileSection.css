@@ -1,7 +1,7 @@
 /* Profile Section (LP-2) */
 .lp-2-section {
   display: flex;
-  margin-left: 50px;
+  /* margin-left: 50px; */
   align-items: center;
   justify-content: center;
   background: #FFFFFF;
@@ -220,13 +220,14 @@
 /* LP-2 Responsive Design */
 @media (max-width: 1440px) {
   .lp-2-container {
-    margin-left: 90px;
+    /* margin-left: 90px; */
     padding: 0 80px;
   }
 }
 
 @media (max-width: 1024px) {
   .lp-2-container {
+  /* margin-left: -85px; */
     flex-direction: column;
     gap: 60px;
     padding: 0 40px;

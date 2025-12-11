@@ -1,7 +1,7 @@
 /* Job Progress Section (LP-6) */
 .lp-6-section {
   background: #FFFFFF;
-  margin-left: 50px;
+  /* margin-left: 50px; */
   padding-top: 64px;
 }
 
@@ -60,13 +60,14 @@
 /* LP-6 Responsive Design */
 @media (max-width: 1440px) {
   .lp-6-container {
-    margin-left: 120px;
+    /* margin-left: 120px; */
     padding: 0 80px;
   }
 }
 
 @media (max-width: 1024px) {
   .lp-6-container {
+    /* margin-left: 140px; */
     flex-direction: column;
     gap: 60px;
     padding: 0 40px;

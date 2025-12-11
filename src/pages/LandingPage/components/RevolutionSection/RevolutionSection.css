@@ -3,7 +3,7 @@
 .lp-12-section {
   width: 100%;
   min-height: 734px;
-  margin-left: 50px;
+  /* margin-left: 50px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -129,7 +129,7 @@
 /* Responsive Design */
 @media (max-width: 1440px) {
   .lp-12-container {
-    margin-left: 120px;
+    /* margin-left: 120px; */
     padding: 0 120px;
     gap: 70px;
   }
@@ -151,6 +151,7 @@
 
 @media (max-width: 1024px) {
   .lp-12-container {
+     /* margin-left: -85px; */
     padding: 0 80px;
     gap: 50px;
     flex-direction: column;

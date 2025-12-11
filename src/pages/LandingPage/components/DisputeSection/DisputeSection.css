@@ -4,7 +4,7 @@
   width: 100%;
   min-height: 100vh;
   display: flex;
-  margin-left: 50px;
+  /* margin-left: 50px; */
   align-items: center;
   justify-content: center;
   background: white;
@@ -349,7 +349,7 @@
 /* Responsive Design */
 @media (max-width: 1440px) {
   .lp-7-container {
-    margin-left: 120px;
+    /* margin-left: 120px; */
     padding: 0 120px;
     gap: 70px;
   }
@@ -371,6 +371,7 @@
 
 @media (max-width: 1024px) {
   .lp-7-container {
+    /* margin-left: -80px; */
     padding: 0 80px;
     gap: 50px;
     flex-direction: column;
@@ -394,6 +395,7 @@
   }
 
   .lp-7-circle-container {
+    margin-top: 40px;
     width: 100%;
     max-width: 460px;
     height: 420px;

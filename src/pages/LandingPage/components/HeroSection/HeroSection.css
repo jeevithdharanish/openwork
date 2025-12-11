@@ -1,39 +1,17 @@
 /* Hero Section (LP-1) */
-:root {
-  --icon-brightness-high: 0.8;
-  --icon-saturation-high: 1.4;
-  --icon-contrast-high: 1.05;
-
-  --rev-brightness-low: 0;
-  --rev-saturation-low: 0;
-  --rev-contrast-low: 0.3;
-}
-
-
-/* The section wrapper - clip only top and bottom, allow sides to overflow */
-.lp-1-section {
-  clip-path: inset(0 -100% 0 -100%);
-}
-
-/* Remove clip-path when sidebar is expanded so fixed elements are visible */
-body.sidebar-expanded .lp-1-section {
-  clip-path: none;
-}
 
 /* Main Content Area */
 .landing-main {
   width: 100%;
-  height: 100vh;
-  max-height: 75vh;
-  padding-top: 120px;
-  box-sizing: border-box;
+  min-height: 100vh;
+  padding-top: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
 
-/* Glow Wrapper - No clipping */
+/* Glow Wrapper - Masked container */
 .glow-wrapper {
   position: absolute;
   top: 50%;
@@ -41,6 +19,7 @@ body.sidebar-expanded .lp-1-section {
   transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
+  overflow: hidden;
   pointer-events: none;
   z-index: 0;
 }
@@ -52,43 +31,10 @@ body.sidebar-expanded .lp-1-section {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 600px;
-  height: 600px;
+  height: 9900px;
   pointer-events: none;
   z-index: 1;
 }
-
-/* Rotating arc border (top quadrant) */
-.circle-arc {
-  position: absolute;
-  top: 77%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300%;
-  height: 180%;
-  pointer-events: none;
-  z-index: 3; /* above circle bg, under center content (z-index 10) */
-  display: none; /* hidden by default, shown only on mobile */
-}
-
-.circle-arc-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-  transform-origin: 50% 50%;
-  transform-box: fill-box;
-  animation: rotate-arc 12s linear infinite;
-  will-change: transform;
-}
-
-@keyframes rotate-arc {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.circle-arc-svg path {
-  opacity: 0.98;
-}
-
 
 /* Radiant Glow */
 .radiant-glow-container {
@@ -113,7 +59,7 @@ body.sidebar-expanded .lp-1-section {
   }
 }
 
-/* Main Circle - White background */
+/* Main Circle */
 .main-circle-bg {
   position: absolute;
   top: 50%;
@@ -122,7 +68,6 @@ body.sidebar-expanded .lp-1-section {
   width: 580px;
   height: 580px;
   object-fit: contain;
-  filter: brightness(0) invert(1);
 }
 
 /* Floating Icon Buttons */
@@ -158,10 +103,9 @@ body.sidebar-expanded .lp-1-section {
   white-space: nowrap;
   padding: 14.667px !important;
   gap: 0;
-  transition: none;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   background: linear-gradient(to bottom, #f4f4f4, #fefefe);
   border: 0px solid lightgrey;
-  will-change: width, padding;
 }
 
 /* Hide label text by default */
@@ -173,36 +117,36 @@ body.sidebar-expanded .lp-1-section {
   width: 0;
   opacity: 0;
   padding: 0;
-  transition: none;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+              opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+              padding 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   display: inline-block;
 }
 
-/* Hover - show label with name */
+/* Expand on hover */
 .icon-btn:hover {
-  width: auto;
-  min-width: max-content;
-  padding: 14.667px 16px 14.667px 14.667px;
-  border-radius: 24px;
-  gap: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: auto !important;
+  padding: 14.667px 16px 14.667px 14.667px !important;
+  border-radius: 24px !important;
+  gap: 0;
+  box-shadow: 0 4px 16px rgba(18, 70, 255, 0.25);
 }
 
-/* Show label on hover */
 .icon-btn:hover span {
   width: auto;
   opacity: 1;
-  padding-left: 4px;
+  padding-left: 8px;
   color: #1246FF;
 }
 
 .icon-btn img {
   width: 14.667px !important;
   height: 14.667px !important;
-  
   flex-shrink: 0;
   display: block;
-  transition: none;
+  transition: filter 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-btn:hover img {
@@ -232,7 +176,7 @@ body.sidebar-expanded .lp-1-section {
 }
 
 .icon-job-progress {
-  left: 63.2%;
+  left: 63.4%;
   top: 17.7%;
 }
 
@@ -262,77 +206,13 @@ body.sidebar-expanded .lp-1-section {
 }
 
 .icon-dao {
-  left: 71.2%;
+  left: 71.1%;
   top: 53.5%;
 }
 
 .icon-dao img {
   width: 10.667px !important;
   height: 10.667px !important;
-}
-
-.icon-multichain {
-  left: 79.5%;
-  top: 63.2%;
-}
-
-.icon-multichain img {
-  filter: brightness(var(--icon-brightness-high))
-          saturate(var(--icon-saturation-high))
-          contrast(var(--icon-contrast-high));
-  width: 20px !important;
-  height: 20px !important;
-}
-
-
-.icon-architecture {
-  left: 82%;
-  top: 72%;
-}
-
-.icon-architecture img {
-  width: 18px !important;
-  height: 18px !important;
-}
-.icon-architecture img {
-  filter: brightness(var(--icon-brightness-high))
-          saturate(var(--icon-saturation-high))
-          contrast(var(--icon-contrast-high));
-  opacity: 1; /* ensure full visibility */
-}
-
-.icon-revolution {
-  
-  left: 84.5%;
-  top: 82%;
-}
-
-.icon-revolution img {
-  filter: brightness(var(--rev-brightness-low))
-          saturate(var(--rev-saturation-low))
-          contrast(var(--rev-contrast-low));
-  opacity: 0.9;
-  width: 18px !important;
-  height: 18px !important;
-   
-}
-
-/* Hide Earn Token and Multichain icons until the sidebar expands */
-.landing-main:not(.expanded) .icon-earn-token,
-.landing-main:not(.expanded) .icon-multichain,
-.landing-main:not(.expanded) .icon-architecture,
-.landing-main:not(.expanded) .icon-revolution {
-  display: none !important;
-}
-
-.icon-earn-token {
-  left: 65.6%;
-  top: 42.5%;
-}
-
-.icon-earn-token img {
-  width: 17px !important;
-  height: 17px !important;
 }
 
 .icon-set-profile {
@@ -343,297 +223,6 @@ body.sidebar-expanded .lp-1-section {
 .icon-set-profile img {
   width: 9.467px !important;
   height: 10.667px !important;
-}
-
-/* Active icon state - no blue border, show label persistently */
-.icon-btn.active {
-  background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
-  border: none !important;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
-  width: auto !important;
-  min-width: max-content;
-  padding: 14.667px 16px 14.667px 14.667px !important;
-  border-radius: 24px !important;
-  gap: 8px;
-  transform: none !important;
-  transition: none !important;
-}
-
-.icon-btn.active img {
-  filter: brightness(0) saturate(100%) invert(27%) sepia(98%) saturate(3089%) hue-rotate(220deg) brightness(101%) contrast(104%);
-}
-
-/* Show label when active - persistent, not just on hover */
-.icon-btn.active span {
-  width: auto;
-  opacity: 1;
-  padding-left: 4px;
-  color: #1246FF;
-  font-weight: 500;
-}
-
-/* ============================================
-   EXPANDED STATE - Fixed sidebar for whole page
-   Circle becomes fixed when scrolling past hero
-   ============================================ */
-
-/* Hide circle when expanded */
-.landing-main.expanded .circle-group {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease-out;
-}
-
-.landing-main.expanded .main-circle-bg {
-  opacity: 0;
-  transition: opacity 0.3s ease-out;
-}
-
-/* Hide glow when expanded/scrolling to other pages */
-.landing-main.expanded .glow-wrapper {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease-out;
-}
-
-.landing-main.expanded .radiant-glow-container {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease-out;
-}
-
-.landing-main.expanded .floating-icons {
-  position: fixed;
-  left: 0;
-  top: 55%;
-  /* Curve stays fixed at center */
-  transform: translateY(-50%) !important;
-  width: 600px;
-  height: 1100px;
-  
-  transition: none;
-  z-index: 1001;
-  margin-left: -100px;
-  animation: none !important;
-}
-
-/* Icons move smoothly along the curve */
-.landing-main.expanded .icon-btn {
-  transition: top 0.4s cubic-bezier(0.22, 1, 0.36, 1), left 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* Radiant glow effect for sidebar - same rotating glow as hero section */
-.sidebar-glow {
-  
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 1600px;
-  height: 600px;
-  background: url('/assets/RadiantGlow.png') center/contain no-repeat;
-  animation: sidebar-rotate-glow 1s linear infinite;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.5s ease-out;
-  z-index: 1000;
-}
-
-/* Show and position sidebar glow when expanded */
-.landing-main.expanded .sidebar-glow {
-  position: fixed;
-  left: 130px;
-  top: 50%;
-  
-  transform: translateY(-50%);
-  opacity: 1;
-  animation: sidebar-rotate-glow 1s linear infinite;
-}
-
-/* Sidebar rotating glow animation - same as hero */
-@keyframes sidebar-rotate-glow {
-  from {
-    transform: translateY(-50%) rotate(0deg);
-  }
-  to {
-    transform: translateY(-50%) rotate(360deg);
-  }
-}
-
-/* Make sure floating-icons doesn't clip the glow */
-.landing-main.expanded .floating-icons {
-  overflow: visible;
-}
-
-/* Static curve line (subtle background) */
-.landing-main.expanded .floating-icons::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='700' viewBox='0 0 180 700'%3E%3Cdefs%3E%3ClinearGradient id='lineGrad' x1='0%25' y1='100%25' x2='0%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%231246FF' stop-opacity='0'/%3E%3Cstop offset='35%25' stop-color='%231246FF' stop-opacity='1'/%3E%3Cstop offset='65%25' stop-color='%231246FF' stop-opacity='1'/%3E%3Cstop offset='100%25' stop-color='%231246FF' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M 160 0 Q 30 175, 30 350 Q 30 525, 160 700' stroke='url(%23lineGrad)' stroke-width='2' fill='none' stroke-linecap='round' stroke-dasharray='950' stroke-dashoffset='-950'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: left top;
-  background-size: 100% 100%;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0;
-  animation: showGlowLine 0.2s ease-out 0.4s forwards;
-}
-
-/* Keyframes for delayed glow line appearance */
-@keyframes showGlowLine {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Separate element for the traveling glow animation */
-.landing-main.expanded .floating-icons::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='700' viewBox='0 0 180 700'%3E%3Cdefs%3E%3ClinearGradient id='glowGrad' x1='0%25' y1='100%25' x2='0%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%231246FF' stop-opacity='0'/%3E%3Cstop offset='35%25' stop-color='%231246FF' stop-opacity='1'/%3E%3Cstop offset='65%25' stop-color='%231246FF' stop-opacity='1'/%3E%3Cstop offset='100%25' stop-color='%231246FF' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cstyle%3E.glow %7B stroke-dasharray: 950; stroke-dashoffset: -950; animation: travelGlow 5s linear infinite; %7D @keyframes travelGlow %7B 0%25 %7B stroke-dashoffset: -950; %7D 100%25 %7B stroke-dashoffset: 950; %7D %7D%3C/style%3E%3Cpath class='glow' d='M 160 0 Q 30 175, 30 350 Q 30 525, 160 700' stroke='url(%23glowGrad)' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  
-  background-repeat: no-repeat;
-  background-position: left top;
-  background-size: 100% 100%;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0;
-  animation: startGlowAnimation 0.2s ease-out 0.5s forwards;
-}
-
-@keyframes startGlowAnimation {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Hide the glow elements - line animation is the effect now */
-.landing-main.expanded .floating-icons .traveling-glow,
-.landing-main.expanded .floating-icons .traveling-glow-bottom {
-  display: none;
-}
-
-/* ============================================
-   CURVE POSITIONS - 7 slots along the arc
-   Position 0 (top): left: 93px, top: 8%
-   Position 1: left: 55px, top: 20%
-   Position 2: left: 20px, top: 34%
-   Position 3 (center): left: 15px, top: 50%
-   Position 4: left: 30px, top: 66%
-   Position 5: left: 75px, top: 82%
-   Position 6 (bottom): left: 129px, top: 95%
-   ============================================ */
-
-/* Default positions - direct-contract (index 3) is at center */
-.landing-main.expanded .icon-set-profile { left: 93px; top: 8%; transform: none; }
-.landing-main.expanded .icon-discoverable { left: 55px; top: 20%; transform: none; }
-.landing-main.expanded .icon-post-job { left: 20px; top: 34%; transform: none; }
-.landing-main.expanded .icon-direct-contract { left: 15px; top: 50%; transform: none; }
-.landing-main.expanded .icon-job-progress { left: 30px; top: 66%; transform: none; }
-.landing-main.expanded .icon-raise-dispute { left: 75px; top: 82%; transform: none; }
-.landing-main.expanded .icon-dao { left: 129px; top: 95%; transform: none; }
-
-/* ============================================
-   DYNAMIC POSITIONS - Icons shift when active changes
-   Icon order: set-profile(0), discoverable(1), post-job(2), 
-               direct-contract(3), job-progress(4), raise-dispute(5), dao(6)
-   ============================================ */
-
-/* Active: set-profile (index 0) - shift all icons DOWN so set-profile is at center */
-.landing-main.expanded .floating-icons.active-pos-0 .icon-set-profile { left: 15px; top: 50%; }
-.landing-main.expanded .floating-icons.active-pos-0 .icon-discoverable { left: 30px; top: 66%; }
-.landing-main.expanded .floating-icons.active-pos-0 .icon-post-job { left: 75px; top: 82%; }
-.landing-main.expanded .floating-icons.active-pos-0 .icon-direct-contract { left: 129px; top: 95%; }
-.landing-main.expanded .floating-icons.active-pos-0 .icon-job-progress { opacity: 0; top: 110%; }
-.landing-main.expanded .floating-icons.active-pos-0 .icon-raise-dispute { opacity: 0; top: 120%; }
-.landing-main.expanded .floating-icons.active-pos-0 .icon-dao { opacity: 0; top: 130%; }
-
-/* Active: discoverable (index 1) - shift icons so discoverable is at center */
-.landing-main.expanded .floating-icons.active-pos-1 .icon-set-profile { left: 55px; top: 20%; }
-.landing-main.expanded .floating-icons.active-pos-1 .icon-discoverable { left: 15px; top: 50%; }
-.landing-main.expanded .floating-icons.active-pos-1 .icon-post-job { left: 30px; top: 66%; }
-.landing-main.expanded .floating-icons.active-pos-1 .icon-direct-contract { left: 75px; top: 82%; }
-.landing-main.expanded .floating-icons.active-pos-1 .icon-job-progress { left: 129px; top: 95%; }
-.landing-main.expanded .floating-icons.active-pos-1 .icon-raise-dispute { opacity: 0; top: 110%; }
-.landing-main.expanded .floating-icons.active-pos-1 .icon-dao { opacity: 0; top: 120%; }
-
-/* Active: post-job (index 2) - shift icons so post-job is at center */
-.landing-main.expanded .floating-icons.active-pos-2 .icon-set-profile { left: 93px; top: 8%; }
-.landing-main.expanded .floating-icons.active-pos-2 .icon-discoverable { left: 55px; top: 20%; }
-.landing-main.expanded .floating-icons.active-pos-2 .icon-post-job { left: 15px; top: 50%; }
-.landing-main.expanded .floating-icons.active-pos-2 .icon-direct-contract { left: 30px; top: 66%; }
-.landing-main.expanded .floating-icons.active-pos-2 .icon-job-progress { left: 75px; top: 82%; }
-.landing-main.expanded .floating-icons.active-pos-2 .icon-raise-dispute { left: 129px; top: 95%; }
-.landing-main.expanded .floating-icons.active-pos-2 .icon-dao { opacity: 0; top: 110%; }
-
-/* Active: direct-contract (index 3) - DEFAULT, all icons in natural positions */
-/* Already defined above */
-
-/* Active: job-progress (index 4) - shift icons UP so job-progress is at center */
-.landing-main.expanded .floating-icons.active-pos-4 .icon-set-profile { opacity: 0; top: -10%; }
-.landing-main.expanded .floating-icons.active-pos-4 .icon-discoverable { left: 93px; top: 8%; }
-.landing-main.expanded .floating-icons.active-pos-4 .icon-post-job { left: 55px; top: 20%; }
-.landing-main.expanded .floating-icons.active-pos-4 .icon-direct-contract { left: 20px; top: 34%; }
-.landing-main.expanded .floating-icons.active-pos-4 .icon-job-progress { left: 15px; top: 50%; }
-.landing-main.expanded .floating-icons.active-pos-4 .icon-raise-dispute { left: 30px; top: 66%; }
-.landing-main.expanded .floating-icons.active-pos-4 .icon-dao { left: 75px; top: 82%; }
-
-/* Active: raise-dispute (index 5) - shift icons UP so raise-dispute is at center */
-.landing-main.expanded .floating-icons.active-pos-5 .icon-set-profile { opacity: 0; top: -20%; }
-.landing-main.expanded .floating-icons.active-pos-5 .icon-discoverable { opacity: 0; top: -10%; }
-.landing-main.expanded .floating-icons.active-pos-5 .icon-post-job { left: 93px; top: 8%; }
-.landing-main.expanded .floating-icons.active-pos-5 .icon-direct-contract { left: 55px; top: 20%; }
-.landing-main.expanded .floating-icons.active-pos-5 .icon-job-progress { left: 20px; top: 34%; }
-.landing-main.expanded .floating-icons.active-pos-5 .icon-raise-dispute { left: 15px; top: 50%; }
-.landing-main.expanded .floating-icons.active-pos-5 .icon-dao { left: 30px; top: 66%; }
-
-/* Active: dao (index 6) - shift all icons UP so dao is at center */
-.landing-main.expanded .floating-icons.active-pos-6 .icon-set-profile { opacity: 0; top: -30%; }
-.landing-main.expanded .floating-icons.active-pos-6 .icon-discoverable { opacity: 0; top: -20%; }
-.landing-main.expanded .floating-icons.active-pos-6 .icon-post-job { opacity: 0; top: -10%; }
-.landing-main.expanded .floating-icons.active-pos-6 .icon-direct-contract { left: 93px; top: 8%; }
-.landing-main.expanded .floating-icons.active-pos-6 .icon-job-progress { left: 55px; top: 20%; }
-.landing-main.expanded .floating-icons.active-pos-6 .icon-raise-dispute { left: 20px; top: 34%; }
-.landing-main.expanded .floating-icons.active-pos-6 .icon-dao { left: 15px; top: 50%; }
-
-/* Smooth opacity transition for icons going off-screen */
-.landing-main.expanded .icon-btn {
-  transition: top 0.4s cubic-bezier(0.22, 1, 0.36, 1), 
-              left 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.3s ease-out;
-}
-
-
-/* Hide center content when expanded */
-.landing-main.expanded .center-content {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-/* Transition for normal state */
-.circle-group,
-.main-circle-bg,
-.radiant-glow-container,
-.center-content {
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* Smooth transition for floating icons and icon buttons */
-.floating-icons {
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.icon-btn {
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Center Content */
@@ -671,7 +260,7 @@ body.sidebar-expanded .lp-1-section {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
-  color: #aaa7a7;
+  color: #767676;
   margin: 0;
 }
 
@@ -737,7 +326,7 @@ body.sidebar-expanded .lp-1-section {
   }
   
   .icon-job-progress {
-    left: 65.2%;
+    left: 65.6%;
     top: 15.5%;
   }
 
@@ -747,12 +336,12 @@ body.sidebar-expanded .lp-1-section {
   }
 
   .icon-raise-dispute {
-    left: 71.8%;
+    left: 72%;
     top: 32.5%;
   }
 
   .icon-dao {
-    left: 73.2%;
+    left: 73.3%;
     top: 54%;
   }
 
@@ -792,31 +381,31 @@ body.sidebar-expanded .lp-1-section {
     margin-top: 0;
   }
   .icon-discoverable {
-    left: 23.9%;
+    left: 23.5%;
     top: 32%;
   }
   .icon-direct-contract {
     left: 50%;
-    top: 3.9%;
+    top: 3.3%;
     transform: translateX(-50%);
   }
   .icon-job-progress {
-    left: 65.2%;
+    left: 65.5%;
     top: 14.5%;
   }
 
   .icon-post-job {
-    left: 31.8%;
+    left: 29.8%;
     top: 14.5%;
   }
 
   .icon-raise-dispute {
-    left: 72.7%;
+    left: 73%;
     top: 32%;
   }
 
   .icon-dao {
-    left: 73.9%;
+    left: 74.5%;
     top: 55%;
   }
 
@@ -851,21 +440,21 @@ body.sidebar-expanded .lp-1-section {
 
   /* Adjust icon positions for medium screens */
   .icon-discoverable {
-    left: 20.8%;
+    left: 20.5%;
     top: 32%;
   }
   .icon-direct-contract {
     left: 50%;
-    top: -01.0%;
+    top: -01.3%;
     transform: translateX(-50%);
   }
   .icon-job-progress {
-    left: 67%;
+    left: 67.5%;
     top: 10.5%;
   }
 
   .icon-post-job {
-    left: 29.3%;
+    left: 28.5%;
     top: 10.5%;
   }
 
@@ -875,7 +464,7 @@ body.sidebar-expanded .lp-1-section {
   }
 
   .icon-dao {
-    left: 77%;
+    left: 76.5%;
     top: 55%;
   }
 
@@ -902,52 +491,27 @@ body.sidebar-expanded .lp-1-section {
     font-size: 15px;
     line-height: 22px;
   }
-
-  /* Keep floating icons in circle layout instead of forming sidebar */
-  .landing-main.expanded .floating-icons {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 950px;
-    height: 570px;
-    margin-left: 0;
-  }
-
-  /* Disable sidebar glow on tablet widths */
-  .landing-main.expanded .sidebar-glow {
-    display: none;
-  }
 }
 
 @media (max-width: 768px) {
-  .landing-main {
-    max-height: none;
-    padding-top: 160px;
-    padding-bottom: 80px;
-    align-items: center;
-    justify-content: center;
-  }
-
   .circle-group {
     width: 500px;
     height: 500px;
   }
 
   .radiant-glow-container {
-    width: 570px;
+    width: 600px;
     height: 600px;
   }
 
   .main-circle-bg {
     width: 460px;
-    height: 460px; 
-    
+    height: 460px;
   }
 
-  .floating-icons,
-  .landing-main.expanded .floating-icons {
-    display: none;
+  .floating-icons {
+    width: 780px;
+    height: 470px;
   }
 
   /* Adjust icon positions for tablets - show only 3 icons on arc */
@@ -1031,29 +595,24 @@ body.sidebar-expanded .lp-1-section {
   }
 
   .center-content {
-    max-width: 360px;
-    gap: 28px;
-    margin-top: 0;
-    padding: 0;
-    
+    max-width: 90%;
+    gap: 36px;
+    margin-top: 40px;
   }
 
   .text-content {
-    gap: 8px;
-    
+    gap: 10px;
   }
 
   .main-heading {
-    font-size: 30px;
-    line-height: 38px;
-    letter-spacing: -0.8px;
-    
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -1.2px;
   }
 
   .main-description {
-    font-size: 13px;
-    line-height: 20px;
-    
+    font-size: 14px;
+    line-height: 21px;
   }
 
   /* Add navbar icons as floating icons in mobile */
@@ -1082,12 +641,10 @@ body.sidebar-expanded .lp-1-section {
     pointer-events: all;
     cursor: pointer;
     transition: all 0.3s ease;
-    --navbar-icon-transform: none;
-    transform: var(--navbar-icon-transform);
   }
 
   .navbar-icon-btn:hover {
-    transform: var(--navbar-icon-transform) scale(1.1);
+    transform: scale(1.1);
     border-color: #1246FF;
     box-shadow: 0 4px 16px rgba(18, 70, 255, 0.25);
   }
@@ -1116,114 +673,45 @@ body.sidebar-expanded .lp-1-section {
   /* Position navbar icons in a circle */
   .navbar-icon-bot {
     left: 50%;
-    top: -16%;
-    --navbar-icon-transform: translateX(-50%);
+    top: 8%;
+    transform: translateX(-50%);
   }
 
   .navbar-icon-2 {
-    right: 94%;
-    top: 10%;
-    --navbar-icon-transform: none;
+    right: 35%;
+    top: 30%;
+    transform: none;
   }
 
   .navbar-icon-3 {
-    left: 94%;
-    top: 10%;
-    --navbar-icon-transform: none;
-  }
-
-  .lp-section:not(.lp-1-section) {
-    scroll-margin-top: 120px;
+    left: 15%;
+    top: 30%;
+    transform: none;
   }
 }
 
 @media (max-width: 480px) {
-  .landing-main {
-    padding-top: 200px;
-    
-    padding-bottom: 120px;
-    align-items: center;
-   justify-content: center;
-  }
-
-  .circle-group {   
+  .circle-group {
     width: 350px;
     height: 350px;
-    position: absolute;
   }
-
-  /* Show rotating arc only on narrow mobile screens */
-  .circle-arc {
-    display: block;
-    width: 200%;
-    height: 200%;
-  }
-
-  .circle-arc-svg {
-    animation: rotate-arc 9s linear infinite;
-  }
-
-  /* .circle-group::after {
-    content: '';
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    width: 690px;
-    height: 490px;
-    transform: translate(-50%, -52%);
-    border-radius: 50%;
-    
-    border: 2px solid rgba(18, 70, 255, 0.95);
-    
-    box-shadow: 0 0 28px rgba(18, 70, 255, 0.28), inset 0 0 16px rgba(18, 70, 255, 0.25);
-    /* background: radial-gradient(circle, rgba(18, 70, 255, 0.15) 0%, rgba(18, 70, 255, 0.08) 60%, rgba(18, 70, 255, 0) 100%); */
-    /* pointer-events: none;
-  } */ */
 
   .radiant-glow-container {
-    width: 1600px;
-    height: 1290px;
-    position:absolute; 
-    top: 100%;
+    width: 800px;
+    height: 800px;
+    top: 125%;
     left: 50%;
-    
     transform: translateX(-50%);
-     animation: rotate-glow 4.5s linear infinite; 
   }
-     /* Radiant Glow */
-/* .radiant-glow-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  background: url('/assets/RadiantGlow.png') center/contain no-repeat;
-  animation: rotate-glow 10s linear infinite;
-  pointer-events: none;
-  z-index: 0;
-} */
 
   .main-circle-bg {
-    width: 780px;
-    height: 850px; 
-    margin-top: 150px;  
-    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 550px;
+    transform: translate(-50%, -40%);
     object-fit: cover;
     object-position: center top;
-    
-    /* content: url('/assets/Ellipse 57.png'); */
+    content: url('/assets/Ellipse 57.png');
   }
-
-
-@keyframes rotate-glow {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
 
   .floating-icons {
     width: 6500px;
@@ -1278,7 +766,7 @@ body.sidebar-expanded .lp-1-section {
 
   .center-content {
     gap: 32px;
-    margin-top: 0;
+    margin-top: -100px;
   }
 
   .text-content {
@@ -1313,35 +801,31 @@ body.sidebar-expanded .lp-1-section {
 
   /* Individual navbar icon sizes for mobile */
   .navbar-icon-bot img {
-    width: 16px !important;
-    height: 16px !important;
+    width: 18px !important;
+    height: 18px !important;
   }
 
   .navbar-icon-2 img {
-    width: 16px !important;
-    height: 16px !important;
+    width: 18px !important;
+    height: 18px !important;
   }
 
   .navbar-icon-3 img {
-    width: 16px !important;
-    height: 16px !important;
+    width: 18px !important;
+    height: 18px !important;
   }
 
   .navbar-icon-bot {
-    top: -27%;
+    top: -25%;
   }
 
   .navbar-icon-2 {
-    right: -1%;
-    top: -18%;
+    right: -5%;
+    top: -13%;
   }
 
   .navbar-icon-3 {
-    left: -1%;
-    top: -18%;
-  }
-
-  .lp-section:not(.lp-1-section) {
-    scroll-margin-top: 80px;
+    left: -5%;
+    top: -13%;
   }
 }
