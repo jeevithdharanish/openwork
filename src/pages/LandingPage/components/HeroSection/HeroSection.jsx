@@ -86,7 +86,7 @@ const HeroSection = () => {
       name: 'revolution',
       label: 'Revolution',
       sectionId: 'lp-12-section',
-      icon: '/assets/sidebar-icon-revolution.svg',
+      icon: '/assets/image.png',
       className: 'icon-revolution',
     },
   ];
