@@ -381,11 +381,12 @@ body.sidebar-expanded .lp-1-section {
   top: 55%;
   /* Curve stays fixed at center */
   transform: translateY(-50%) !important;
-  width: 180px;
-  height: 700px;
+  width: 600px;
+  height: 1100px;
+  
   transition: none;
   z-index: 1001;
-  margin-left: 40px;
+  margin-left: -100px;
   animation: none !important;
 }
 
@@ -396,6 +397,7 @@ body.sidebar-expanded .lp-1-section {
 
 /* Radiant glow effect for sidebar - same rotating glow as hero section */
 .sidebar-glow {
+  
   position: absolute;
   top: 50%;
   left: 50%;
@@ -403,7 +405,7 @@ body.sidebar-expanded .lp-1-section {
   width: 1600px;
   height: 600px;
   background: url('/assets/RadiantGlow.png') center/contain no-repeat;
-  animation: sidebar-rotate-glow 20s linear infinite;
+  animation: sidebar-rotate-glow 1s linear infinite;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.5s ease-out;
@@ -415,9 +417,10 @@ body.sidebar-expanded .lp-1-section {
   position: fixed;
   left: 130px;
   top: 50%;
+  
   transform: translateY(-50%);
   opacity: 1;
-  animation: sidebar-rotate-glow 20s linear infinite;
+  animation: sidebar-rotate-glow 1s linear infinite;
 }
 
 /* Sidebar rotating glow animation - same as hero */

@@ -102,15 +102,16 @@ const HeroSection = () => {
 
   const sectionOrder = iconConfigs.map((icon) => icon.sectionId);
 
-  const CENTER_SLOT_INDEX = 3;
+  const CENTER_SLOT_INDEX = 2;
   const curveSlots = [
-    { left: 108, top: '4%' },
-    { left: 62, top: '16%' },
-    { left: 28, top: '30%' },
-    { left: 14, top: '46%' },
-    { left: 25, top: '62%' },
-    { left: 62, top: '78%' },
-    { left: 116, top: '92%' },
+    // { left: 108, top: '4%' },
+    { left: 62, top: '-60%' },
+    { left: 218, top: '30%' },
+    
+    { left: 184, top: '46%' },
+    { left: 200, top: '59%' },
+    { left: 220, top: '67%' },
+    { left: 245, top: '74%' },
     { left: 150, top: '108%' },
     { left: 174, top: '122%' },
     { left: 196, top: '136%' },
